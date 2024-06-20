@@ -6,6 +6,29 @@
     <title>Form</title>
 </head>
 <body>
-    
+    <form>
+        <label for="firstname">Ad:</label><br>
+        <input type="text" id="firstname" name="firstname"><br><br>
+        <label for="lastname">Soyad:</label><br>
+        <input type="text" id="lastname" name="lastname"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="pwd">Şifre:</label><br>
+        <input type="password" id="pwd" name="pwd" minlength="8" required><br><br>
+        <p>Cinsiyet:</p>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Erkek</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Kadın</label><br><br>
+        <label for="fruit">Meyve Seçimi:</label><br>
+            <select id="fruit" name="fruit">
+                <option value="apple">Elma</option>
+                <option value="banana">Muz</option>
+                <option value="strawberry">Çilek</option>
+            </select><br><br>
+        <label for="message">Mesajınız:</label><br>
+        <textarea id="message" name="message"></textarea><br><br>
+        <input type="submit" value="Gönder">
+      </form>
 </body>
 </html>
