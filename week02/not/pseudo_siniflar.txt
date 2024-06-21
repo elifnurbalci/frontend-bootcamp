@@ -1,0 +1,225 @@
+Pseudo Sınıflar ( :hover, :active, :visited, :first-child vb.)
+I. :hover Pseudo Sınıfı:
+
+:hover pseudo sınıfı, bir HTML elemanına fare üzerine gelindiğinde uygulanır. Bu pseudo sınıfı kullanarak, kullanıcının bir öğenin üzerine gelmesi durumunda onun görünümünü değiştirebiliriz. Örneğin, bir bağlantıya :hover pseudo sınıfı uygulayarak, kullanıcının bağlantıya fareyle geldiğinde metin rengini veya altı çizisini değiştirebiliriz.
+
+a:hover {
+     color: #FF5733;
+    /* Fare üzerine gelince metin rengini değiştirme */
+     text-decoration: underline;
+    /* Fare üzerine gelince altı çizili yapma */
+}
+:hover ile Geçiş Efekti:**
+
+Bu örnek, bir kutunun üzerine gelindiğinde boyutunun büyümesini ve arka plan renginin değişmesini sağlar.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            transition: all 0.3s ease; /* Geçiş efekti için geçiş süresi ve stili */
+        }
+
+        .box:hover {
+            width: 150px;
+            height: 150px;
+            background-color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+II. :active Pseudo Sınıfı:
+
+:active pseudo sınıfı, bir HTML elemanına tıklandığında uygulanır. Bu pseudo sınıfı genellikle tıklanan elemanın anında tepki vermesini sağlamak için kullanılır. Örneğin, bir düğmeye tıklandığında arka plan rengini veya metin rengini değiştirebiliriz.
+
+button:active {
+     background-color: #007BFF;
+    /* Butona tıklandığında arka plan rengini değiştirme */
+     color: #FFFFFF;
+    /* Butona tıklandığında metin rengini beyaz yapma */
+}
+:active ile Düğme Basma Efekti:**
+
+Bu örnek, düğmeye tıklandığında boyutunun küçülmesini ve renk değiştirmesini sağlar.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .button:active {
+            transform: scale(0.9); /* Düğmeye tıklandığında boyutunu küçültme */
+            background-color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+    <button class="button">Tıkla</button>
+</body>
+</html>
+III. :visited Pseudo Sınıfı:
+
+:visited pseudo sınıfı, ziyaret edilmiş bir bağlantının rengini değiştirmek için kullanılır. Bu sayede kullanıcıların ziyaret ettiği bağlantıları ayırt edebiliriz.
+
+a:visited {
+     color: #FF5733;
+    /* Ziyaret edilmiş bağlantının metin rengini değiştirme */
+}
+:visited ile Ziyaret Edilen Bağlantı Stili:**
+
+Bu örnek, ziyaret edilen bağlantıların rengini değiştirir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        a:link {
+            color: #007BFF; /* Normal bağlantı rengi */
+        }
+
+        a:visited {
+            color: #FF5733; /* Ziyaret edilen bağlantı rengi */
+        }
+    </style>
+</head>
+<body>
+    <a href="#">Bu bir bağlantı</a>
+</body>
+</html>
+IV. :first-child Pseudo Sınıfı:
+
+:first-child pseudo sınıfı, belirtilen HTML elemanının ebeveynindeki ilk çocuğu hedefler. Bu pseudo sınıfı kullanarak, bir liste öğesinin ebeveyninin ilk çocuğunu seçebilir ve stilleyebiliriz.
+
+ul li:first-child {
+     font-weight: bold;
+    /* Listede ilk öğenin yazı tipini kalın yapma */
+}
+V. :nth-child() Pseudo Sınıfı:
+
+:nth-child() pseudo sınıfı, belirtilen HTML elemanının ebeveynindeki belirli bir sıradaki çocuğunu hedefler. Bu pseudo sınıfı kullanarak, belirli sıradaki öğeleri seçebilir ve stilleyebiliriz.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        p:nth-child(even) {
+            background-color: #007BFF; /* Çift sıradaki paragraf arka plan rengini mavi yapma */
+            color: #FFFFFF; /* Çift sıradaki paragraf metin rengini beyaz yapma */
+            padding: 10px;
+        }
+
+        p:nth-child(odd) {
+            background-color: #FF5733; /* Tek sıradaki paragraf arka plan rengini turuncu yapma */
+            color: #FFFFFF; /* Tek sıradaki paragraf metin rengini beyaz yapma */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Bu bir çift sıradaki paragraf.</p>
+    <p>Bu bir tek sıradaki paragraf.</p>
+    <p>Bu bir çift sıradaki paragraf.</p>
+    <p>Bu bir tek sıradaki paragraf.</p>
+    <p>Bu bir çift sıradaki paragraf.</p>
+</body>
+</html>
+:nth-child() ile Çift ve Tek Sıradaki Öğeleri Stillemek:**
+
+Bu örnek, bir liste içindeki çift ve tek sıradaki öğeleri farklı renkte ve arka plan renginde stillemektedir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        li:nth-child(even) {
+            color: #007BFF; /* Çift sıradaki öğelerin metin rengini mavi yapma */
+            background-color: #F0F0F0; /* Çift sıradaki öğelerin arka plan rengini açık gri yapma */
+        }
+
+        li:nth-child(odd) {
+            color: #FF5733; /* Tek sıradaki öğelerin metin rengini turuncu yapma */
+            background-color: #E0E0E0; /* Tek sıradaki öğelerin arka plan rengini gri yapma */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Öğe 1</li>
+        <li>Öğe 2</li>
+        <li>Öğe 3</li>
+        <li>Öğe 4</li>
+        <li>Öğe 5</li>
+    </ul>
+</body>
+</html>
+VI. :not() Pseudo Sınıfı:
+
+:not() pseudo sınıfı, belirli bir seçiciden istenmeyen öğeleri hariç tutmak için kullanılır. Bu pseudo sınıfı kullanarak, belirli bir seçiciye uyan öğeleri stillemekten kaçınabiliriz.
+
+ul li:not(:last-child) {
+     margin-right: 10px;
+    /* Listenin son öğesi dışındaki öğelerin sağ tarafına 10px boşluk bırakma */
+}
+VII. :focus Pseudo Sınıfı:
+
+:focus pseudo sınıfı, bir HTML elemanına odaklandığında uygulanır. Bu pseudo sınıfı genellikle form elemanlarında kullanıcı girişiyle etkileşimi vurgulamak için kullanılır.
+
+input:focus {
+     border: 2px solid #FF5733;
+    /* Giriş alanına odaklandığında kenarlık rengini değiştirme */
+     outline: none;
+    /* Odak durumunda varsayılan kenarlık kaldırma */
+}
+VIII. :empty Pseudo Sınıfı:
+
+:empty pseudo sınıfı, içeriği olmayan bir HTML elemanını hedefler. Bu pseudo sınıfı kullanarak, içeriği boş olan öğeleri gizleyebilir veya stilleyebiliriz.
+
+p:empty {
+     display: none;
+    /* İçeriği boş paragrafı gizleme */
+}
+İçeriği Boş Div Elemanını Gizleme
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        /* İçi boş .box elemanlarını gizleme */
+        .box:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">İçerikli Kutu</div>
+    <div class="box"></div>
+    <div class="box">Yine İçerikli Kutu</div>
+    <div class="box"></div>
+</body>
+</html>
