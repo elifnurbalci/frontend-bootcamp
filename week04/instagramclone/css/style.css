@@ -44,3 +44,7 @@ input.empty {
   text-decoration: none;
   color: lightgrey;
 }
+
+.form-control {
+  background: url('../assets/search-solid.svg') no-repeat;
+}
