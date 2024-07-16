@@ -4,7 +4,7 @@ document.querySelectorAll('.drum').forEach(button => {
 
 document.addEventListener('keydown', event => {
     const key = event.key.toUpperCase();
-    const button = document.querySelector(`.drum:contains(${key})`);
+    const button = document.querySelector(`.drum[data-key="${key}"]`);
     if (button) playSound(button);
 });
 
