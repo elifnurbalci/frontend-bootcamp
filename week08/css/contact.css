@@ -1,0 +1,21 @@
+.form-group {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#inputName {
+    background-color: rgb(224, 242, 254);
+}
+
+#inputEmail {
+    background-color: rgb(224, 242, 254);
+}
+
+#inputMessage {
+    background-color: rgb(224, 242, 254);
+}
+
+.form-group #inputMessage {
+    height: 120px;
+    resize: vertical;
+}
