@@ -21,14 +21,21 @@
     align-items: center;
 }
 
-#navbar li {
+#navbar li a {
     position: relative;
     padding: 6px 10px;
-    columns: var(--font-color-1);
-
+    font-weight: 700;
+    color: var(--font-color-1);
 }
 
-#header .nav-btn {
-    background-color: var(--background-color-1);
-    color: var(--font-color-2);
+#navbar li button {
+    padding: 5px;
+    margin: 15px;
+    background-color: var(--secondary-color);
+    color: var(--font-color-1);
+    font-weight: 700;
+    border: 0;
+    border-radius: var(--border-radius);
 }
+/* :hover kismi eklenecek */
+
