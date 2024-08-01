@@ -1,0 +1,94 @@
+.classes {
+    padding: 40px 0;
+    background-color: var(--background-color-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.classes-title {
+    margin-bottom: 30px;
+}
+
+.classes-title h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.classes-title p {
+    color: var(--font-color-2);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: var(--primary-color);
+    color: var(--font-color-1);
+    border: none;
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: var(--secondary-color);
+}
+
+.tab-button:hover {
+    background-color: #2c3e50;
+}
+
+.class-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+}
+
+.class-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.class-info h3 {
+    color: var(--font-color-2);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.class-info p {
+    color: var(--font-color-2);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.class-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.class-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}

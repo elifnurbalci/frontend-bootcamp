@@ -1,3 +1,7 @@
+* {
+    scroll-behavior: smooth;
+}
+
 :root{
     --primary-color:#355592;
     --secondary-color:#F39C12;
@@ -24,6 +28,19 @@ body {
     background-color: var(--primary-color);
     color: var(--font-color-1);
     border-color: var(--primary-color);
+    margin: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+.orange-button {
+    background-color: var(--secondary-color);
+    color: var(--font-color-1);
+    border-color: var(--secondary-color);
     margin: 5px;
     padding-right: 15px;
     padding-left: 15px;
