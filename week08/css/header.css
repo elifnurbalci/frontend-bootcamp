@@ -24,5 +24,11 @@
 #navbar li {
     position: relative;
     padding: 6px 10px;
-    
+    columns: var(--font-color-1);
+
+}
+
+#header .nav-btn {
+    background-color: var(--background-color-1);
+    color: var(--font-color-2);
 }
