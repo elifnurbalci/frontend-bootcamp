@@ -1,0 +1,24 @@
+.trainer {
+    padding: 20px 0;
+}
+
+.trainers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.trainer-info {
+    flex: 1 0 22%;
+    min-width: 180px;
+    max-width: 220px;
+}
+
+.trainer-info img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -23,6 +23,15 @@ body {
     color: var(--font-color-1);
     background-color: var(--font-color-1);
 }
+section {
+    padding: 20px;
+}
+
+footer {
+    padding-top: 20px;
+    background-color: var(--primary-color);
+    color: var(--font-color-1);
+}
 
 .blue-button {
     background-color: var(--primary-color);

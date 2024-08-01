@@ -37,5 +37,11 @@
     border: 0;
     border-radius: var(--border-radius);
 }
-/* :hover kismi eklenecek */
 
+#navbar li button:hover {
+    color: lightgray;
+}
+
+#navbar li a:hover {
+    color: lightgray;
+}
