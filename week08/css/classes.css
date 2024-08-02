@@ -3,13 +3,6 @@
     background-color: var(--background-color-white);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
 .classes-title {
     margin-bottom: 30px;
 }

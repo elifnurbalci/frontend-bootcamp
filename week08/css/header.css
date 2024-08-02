@@ -1,6 +1,15 @@
 #header {
     height: 80px;
     background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+#header.header-scrolled {
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    height: 80px;
+    background-color: rgba(22, 22, 22, 0.8);
 }
 
 #header .container {
@@ -12,10 +21,12 @@
 #header .logo img {
     display: block;
 }
-
-#navbar ul {
+.navbar .nav-item {
     margin: 0;
     padding: 0;
+}
+
+#navbar ul {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,3 +56,4 @@
 #navbar li a:hover {
     color: lightgray;
 }
+

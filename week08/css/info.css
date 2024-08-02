@@ -1,5 +1,9 @@
 
-.stats-container {
+.info {
+    background-color: var(--background-color-blue);
+}
+
+.info .container {
     display: flex;
     justify-content: center;
     background-color: var(--background-color-blue);
@@ -8,7 +12,7 @@
     text-align: center;
 }
 
-.stat-box {
+.box {
     background-color: var(--background-color-white);
     padding: 20px;
     border-radius: 8px;
@@ -17,13 +21,13 @@
     margin: 0 20px;
 }
 
-.stat-number {
+.number {
     font-size: 20px;
     font-weight: 800;
     color: var(--primary-color)
 }
 
-.stat-label {
+.label {
     font-size: 16px;
     font-weight: 800;
     color: var(--font-color-2);
