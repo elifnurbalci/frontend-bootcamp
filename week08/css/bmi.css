@@ -66,3 +66,15 @@
     height: auto;
     border-radius: 10px;
 }
+
+@media (max-width: 576px) {
+    .bmi-container {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2em;
+    }
+    .bmi-info h2 {
+        font-size: 1.5em;
+    }
+}

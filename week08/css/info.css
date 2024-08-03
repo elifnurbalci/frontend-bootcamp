@@ -33,3 +33,27 @@
     color: var(--font-color-2);
     margin-top: 10px;
 }
+
+@media (max-width: 576px) {
+    .info .container {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5em;
+    }
+    .box {
+        padding: 10px;
+        margin: 5px;
+        width: 240px;
+        height: fit-content;
+    }
+    .number {
+        font-size: 28px;
+        padding-bottom: 10px;
+    }
+    .label {
+        font-size: 20px;
+        margin: 0px 15px;
+        padding-bottom: 10px;
+    }
+}

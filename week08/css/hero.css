@@ -1,4 +1,4 @@
-#hero {
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,14 +9,14 @@
     background-color: var(--background-color-black);
 }
 
-#hero image {
+.hero image {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
 }
 
-#hero .hero-text button {
+.hero .hero-text button {
     position: absolute;
     top: 15%;
     left: 20%;
@@ -33,7 +33,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-#hero .hero-text h1 {
+.hero .hero-text h1 {
     position: absolute;
     top: 20%;
     left: 20%;
@@ -44,21 +44,56 @@
     letter-spacing: -0.5px;
 }
 
-#hero .hero-text p {
+.hero .hero-text p {
     position: absolute;
     top: 50%;
     left: 20%;
     right: 20%;
-    background-color: black;
+    background-color: rgba(15, 15, 15, 0.5);
     font-size: 30px;
     font-weight: 700;
-    background: transparent;
+    padding: 10px;
 }
 
-#hero .hero-button {
+.hero .hero-button {
     position: absolute;
     top: 80%;
     left: 20%;
 }
 
+@media (max-width: 576px) {
 
+    .hero .hero-text h1 {
+        font-size: 36px;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: auto;
+        
+    }
+    .hero .hero-text p {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: auto;
+
+    }
+    .hero .hero-button {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+    .blue-button {
+        font-size:18px;
+        width: 18em;
+        height: auto;
+    }
+    .link-button {
+        font-size:18px;
+        width: 18em;
+        height: auto;
+        padding-bottom: 5px;
+    }
+}
