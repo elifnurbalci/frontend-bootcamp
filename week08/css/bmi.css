@@ -36,6 +36,16 @@
 
 .bmi-inputs {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.bmi-inputs h6 {
+    color: var(--font-color-2);
+    font-weight: 500;
+    align-self: self-end;
+    padding: 0;
+    margin-right: 1em;
 }
 
 .bmi-inputs input {
@@ -50,8 +60,24 @@
 
 .bmi-display {
     flex: 1;
+    position: relative;
+    width: fit-content;
     min-width: 300px;
     text-align: center;
+}
+
+#bmi-chart, #bmi-title {
+    width: 100%;
+    max-width: 600px;
+}
+
+.arrow-up {
+    position: absolute;
+    bottom: -20px;
+    width: 15px;
+    height: 15px;
+    background-color:var(--secondary-color);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 .bmi-display h3 {
