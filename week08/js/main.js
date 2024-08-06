@@ -74,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (bmi>=13.5 && bmi <18.5) {
             position=0;
             left = bmi - 13;
-        }
-            else if (bmi >= 18.5 && bmi < 25) {
+        } else if (bmi >= 18.5 && bmi < 25) {
             position = 1;
             left = bmi - 18;
         } else if (bmi >= 25 && bmi < 30) {
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             left = -2;
         }
           arrowPosition = position * 20 + left;
-        }
+    }
     arrow.style.left = `${arrowPosition}%`;
     }
 });
