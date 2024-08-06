@@ -28,6 +28,7 @@
 
 .contact-us .class-info {
     flex: 1;
+    padding-top: 18px;
 }
 
 .contact-us .class-image {
@@ -39,7 +40,6 @@
 
 @media (max-width: 576px) {
     .contact-us .class-content {
-        flex-direction: row;
         align-items: center;
         flex-wrap: wrap;
         gap: 1em;
