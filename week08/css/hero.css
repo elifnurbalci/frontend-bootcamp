@@ -1,28 +1,36 @@
+.hero-section {
+    padding: 0;
+    margin: 0;
+}
 .hero {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--background-color-black);
 }
 
-.hero image {
+.hero-image {
+    position: absolute;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    z-index: -1;
 }
 
-.hero .hero-text button {
-    position: absolute;
-    top: 15%;
-    left: 20%;
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    padding: 20%;
+    z-index: 1;
+}
+
+.tag {
     background-color: var(--primary-color);
-    padding-top: 2px; 
-    padding-bottom: 2px; 
+    padding: 5px;
     margin: 10px; 
     border: 0; 
     color: var(--font-color-1); 
@@ -31,69 +39,53 @@
     font-weight: 600; 
     text-emphasis-color: var(--font-color-2); 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    width: min-content;
 }
 
-.hero .hero-text h1 {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    right: 20%;
+.hero-text h1 {
     color: var(--font-color-1);
     font-size: 80px;
     font-weight: 800;
     letter-spacing: -0.5px;
 }
 
-.hero .hero-text p {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    right: 20%;
+.hero-text p {
     background-color: rgba(15, 15, 15, 0.5);
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
     padding: 10px;
 }
 
-.hero .hero-button {
-    position: absolute;
-    top: 80%;
-    left: 20%;
-}
 
 @media (max-width: 576px) {
 
-    .hero .hero-text h1 {
+    .hero-text h1 {
         font-size: 36px;
         padding: 0;
         margin: 0;
         width: auto;
         height: auto;
+        padding-bottom: 10%;
         
     }
-    .hero .hero-text p {
+    .hero-text p {
         font-size: 18px;
-        font-weight: 400;
         padding: 0;
         margin: 0;
         width: auto;
         height: auto;
-
-    }
-    .hero .hero-button {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 5px;
     }
     .blue-button {
         font-size:18px;
-        width: 18em;
-        height: auto;
+        width: 100%;
     }
     .link-button {
         font-size:18px;
-        width: 18em;
-        height: auto;
-        padding-bottom: 5px;
+        width: 100%;
+    }
+
+    .hero-button {
+        padding-bottom: 20%;
+        padding-top: 20%;
     }
 }
