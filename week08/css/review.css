@@ -54,13 +54,38 @@
 }
 
 .client-review {
+    background-color: transparent;
+    position: relative;
+}
+
+.review-text {
     background-color: var(--primary-color);
     width: 100%;
     padding: 15px;
-    border-radius: var(--border-radius);
+    border-radius: 3px 3px 0px 0px;
     color: var(--font-color-1);
-    text-align: center;
-    position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    z-index: 0;
+    
+}
+
+.shadow-left{
+    position: absolute;
+    clip-path: polygon(100% 100%, 0 0, 100% 0);
+    width: 24px;
+    height: 24px;
+    background-color:var(--primary-color);
+    opacity:0.5;
+    left: 0;
+}
+
+.shadow-right{
+    position: absolute;
+    right: 0;
+    clip-path: polygon(0 100%, 0 0, 100% 0);
+    width: 24px;
+    height: 24px;
+    background-color:var(--primary-color);
+    opacity:0.5;
 }
