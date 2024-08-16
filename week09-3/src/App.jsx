@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import List from './List';
 
 function App() {
   // const [expenseName, setExpenseName] = useState("");
@@ -73,10 +74,11 @@ function App() {
       <ul>
         {expenses.map((item, index) => {
           return (
-            <li key={index}>
-              <span>{item.type} - </span>
-              <span>£{item.amount}</span>
-            </li>
+            // <li key={index}>
+            //   <span>{item.type} - </span>
+            //   <span>£{item.amount}</span>
+            // </li>
+            <List key={index} item={item}/>
           )
         })}
       </ul>
