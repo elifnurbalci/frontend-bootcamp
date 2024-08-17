@@ -7,7 +7,7 @@ function Footer() {
         <div className="footer-content">
             <div className="footer-logo">
                 <a href="/" className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <img src="./public/images/logo.png" alt="Logo" className="logo-img" />
+                    <img src="./images/logo.png" alt="Logo" className="logo-img" />
                 </a>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo in repudiandae, consequatur fugiat et optio quasi tempore quis omnis sapiente vero animi qui ad error quisquam alias corrupti est possimus.</p>
             </div>

@@ -13,7 +13,7 @@ function Trainers() {
               <div className="trainers">
                   <div className="trainer-info">
                       <div className="trainer-bg"></div>
-                      <img src="./public/images/trainer1.jpg" alt="trainer1" />
+                      <img src="./images/trainer1.jpg" alt="trainer1" />
                       <div className="name-card">
                           <h5>Rose Doe</h5>
                           <h6>Cardio Trainer</h6>
@@ -21,7 +21,7 @@ function Trainers() {
                   </div>
                   <div className="trainer-info">
                       <div className="trainer-bg"></div>
-                      <img src="./public/images/trainer2.jpg" alt="trainer2" />
+                      <img src="./images/trainer2.jpg" alt="trainer2" />
                       <div className="name-card">
                           <h5>John Doe</h5>
                           <h6>Cardio Trainer</h6>
@@ -29,7 +29,7 @@ function Trainers() {
                   </div>
                   <div className="trainer-info">
                       <div className="trainer-bg"></div>
-                      <img src="./public/images/trainer3.jpg" alt="trainer3" />
+                      <img src="./images/trainer3.jpg" alt="trainer3" />
                       <div className="name-card">
                           <h5>Jane Doe</h5>
                           <h6>Cardio Trainer</h6>

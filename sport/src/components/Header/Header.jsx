@@ -39,7 +39,7 @@ function Header() {
       <header id="header" className="fixed-top" ref={headerRef}>
         <div className="container">
           <div className="logo">
-            <img src="./public/images/logo.png" alt="Logo" />
+            <img src="./images/logo.png" alt="Logo" />
           </div>
           <button
             id="menu-toggle"

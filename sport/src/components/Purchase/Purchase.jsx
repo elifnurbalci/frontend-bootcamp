@@ -12,7 +12,7 @@ function Purchase() {
             </div>
             <div className="purchases">
                 <div className="purchase-info">
-                    <img src="./public/images/purchase1.jpg" alt="purchase1" /> 
+                    <img src="./images/purchase1.jpg" alt="purchase1" /> 
                     <h5>Kettlebell (5kg)</h5>
                     <h6><span>£89.99</span> - £59.99</h6>
                     <div className="cart">
@@ -21,7 +21,7 @@ function Purchase() {
                     </div>
                 </div>
                 <div className="purchase-info">
-                    <img src="./public/images/purchase2.jpg" alt="purchase2" />
+                    <img src="./images/purchase2.jpg" alt="purchase2" />
                     <h5>Treadmill</h5>
                     <h6><span>£89.99</span> - £59.99</h6>
                     <div className="cart">
@@ -30,7 +30,7 @@ function Purchase() {
                     </div>
                 </div>
                 <div className="purchase-info">
-                    <img src="./public/images/purchase3.jpg" alt="purchase3" />
+                    <img src="./images/purchase3.jpg" alt="purchase3" />
                     <h5>Adjustable Dumbbell</h5>
                     <h6><span>£89.99</span> - £59.99</h6>
                     <div className="cart">
@@ -39,7 +39,7 @@ function Purchase() {
                     </div>
                 </div>
                 <div className="purchase-info">
-                    <img src="./public/images/purchase4.jpg" alt="purchase4" />
+                    <img src="./images/purchase4.jpg" alt="purchase4" />
                     <h5>Kettlebell (3kg)</h5>
                     <h6><span>£89.99</span> - £59.99</h6>
                     <div className="cart">

@@ -5,7 +5,7 @@ function Hero() {
     <div>
         <div id="hero" className="hero-section">
           <div className="hero">
-              <img className="hero-image" src="./public/images/hero-man.jpg" alt="Hero Man" />
+              <img className="hero-image" src="./images/hero-man.jpg" alt="Hero Man" />
               <div className="hero-text">
                   <div className="tag">POWERFULL</div>
                   <h1>Group <br />Practice <br />With Trainer</h1>

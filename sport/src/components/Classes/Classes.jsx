@@ -13,7 +13,7 @@ function Classes() {
         'Monday-Tuesday: 10:00am - 12:00pm',
         'Wednesday-Friday: 3:00pm - 6:00pm',
       ],
-      image: './public/images/yoga.jpg',
+      image: './images/yoga.jpg',
     },
     {
       title: 'Why Choose Group?',
@@ -23,7 +23,7 @@ function Classes() {
         'Monday-Tuesday: 10:00am - 12:00pm',
         'Wednesday-Friday: 3:00pm - 6:00pm',
       ],
-      image: './public/images/group.webp',
+      image: './images/group.webp',
     },
     {
       title: 'Why Choose Solo?',
@@ -33,7 +33,7 @@ function Classes() {
         'Monday-Tuesday: 10:00am - 12:00pm',
         'Wednesday-Friday: 3:00pm - 6:00pm',
       ],
-      image: './public/images/solo.jpg',
+      image: './images/solo.jpg',
     },
     {
       title: 'Why Choose Stretching?',
@@ -43,7 +43,7 @@ function Classes() {
         'Monday-Tuesday: 10:00am - 12:00pm',
         'Wednesday-Friday: 3:00pm - 6:00pm',
       ],
-      image: './public/images/stret.webp',
+      image: './images/stret.webp',
     },
   ];
 

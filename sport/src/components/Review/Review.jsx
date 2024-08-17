@@ -13,7 +13,7 @@ function Review() {
             <div className="review-client">
                 <div className="client">
                     <div className="client-info">
-                        <img src="./public/images/client1.jpg" alt="client1" className="client-image" />
+                        <img src="./images/client1.jpg" alt="client1" className="client-image" />
                         <div className="client-details">
                             <h6 className="client-name">Diet Expert</h6>
                             <p className="client-title">CFO</p>
@@ -29,7 +29,7 @@ function Review() {
                 </div>
                 <div className="client">
                     <div className="client-info">
-                        <img src="./public/images/client2.jpg" alt="client2" className="client-image" />
+                        <img src="./images/client2.jpg" alt="client2" className="client-image" />
                         <div className="client-details">
                             <h6 className="client-name">Cardio Trainer</h6>
                             <p className="client-title">CEO</p>

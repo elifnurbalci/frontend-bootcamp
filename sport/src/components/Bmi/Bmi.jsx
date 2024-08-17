@@ -79,8 +79,8 @@ function Bmi() {
           </div>
           <div className="bmi-display">
             <h3>Your BMI</h3>
-            <img src="./public/images/bmi-title.jpg" alt="BMI Categories" id="bmi-title" />
-            <img src="./public/images/bmi.jpg" alt="BMI Categories" id="bmi-chart" />
+            <img src="./images/bmi-title.jpg" alt="BMI Categories" id="bmi-title" />
+            <img src="./images/bmi.jpg" alt="BMI Categories" id="bmi-chart" />
             <div id="arrow-up" className="arrow-up" style={{ left: `${arrowPosition}%` }}></div>
           </div>
         </div>
