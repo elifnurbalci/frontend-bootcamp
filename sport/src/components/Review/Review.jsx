@@ -2,7 +2,7 @@ import React from 'react'
 
 function Review() {
   return (
-      <div className="review">
+      <div className="review" id="review">
         <div className="container">
             <div className="classes-title">
                 <h2>REVIEW CLIENT</h2>
