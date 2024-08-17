@@ -1,0 +1,52 @@
+.form-group {
+    padding-top: 10px;
+}
+
+#inputName {
+    background-color: rgb(224, 242, 254);
+}
+
+#inputEmail {
+    background-color: rgb(224, 242, 254);
+}
+
+#inputMessage {
+    background-color: rgb(224, 242, 254);
+}
+
+.form-group #inputMessage {
+    height: 100px;
+    resize: vertical;
+}
+
+.contact-us .class-content {
+    display: flex;
+    align-items:center;
+    height: 100%;
+    justify-content: center;
+}
+
+.contact-us .class-info {
+    flex: 1;
+    padding-top: 18px;
+}
+
+
+.class-content .class-info p span {
+    font-weight: 700;
+}
+
+.contact-us .class-image {
+    flex: 2;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+@media (max-width: 576px) {
+    .contact-us .class-content {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+}
