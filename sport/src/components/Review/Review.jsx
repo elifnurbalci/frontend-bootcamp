@@ -2,7 +2,6 @@ import React from 'react'
 
 function Review() {
   return (
-    <div>
       <div className="review">
         <div className="container">
             <div className="classes-title">
@@ -46,7 +45,6 @@ function Review() {
             </div>
         </div>
       </div>
-    </div>
   )
 }
 
