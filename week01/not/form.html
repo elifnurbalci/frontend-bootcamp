@@ -1,0 +1,81 @@
+<!-- Basit Bir Form Oluşturma Örneği -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Kayıt Formu</h2>
+
+<form action="/submit_form.html" method="get">
+  <!-- Text Input -->
+  <label for="fname">Ad:</label><br>
+  <input type="text" id="fname" name="fname" required><br>
+
+  <label for="lname">Soyad:</label><br>
+  <input type="text" id="lname" name="lname" required><br>
+
+  <!-- Email Input -->
+  <label for="email">E-posta:</label><br>
+  <input type="email" id="email" name="email" required><br>
+
+  <!-- Password Input -->
+  <label for="pwd">Şifre:</label><br>
+  <input type="password" id="pwd" name="pwd" minlength="8" required><br>
+
+  <!-- Date Input -->
+  <label for="dob">Doğum tarihi:</label><br>
+  <input type="date" id="dob" name="dob" required><br>
+
+  <!-- Radio Button Input -->
+  <p>Cinsiyet:</p>
+  <input type="radio" id="male" name="gender" value="male" required>
+  <label for="male">Erkek</label><br>
+  <input type="radio" id="female" name="gender" value="female" required>
+  <label for="female">Kadın</label><br>
+
+  <!-- Checkbox Input -->
+  <input type="checkbox" id="terms" name="terms" required>
+  <label for="terms">Kullanım şartlarını kabul ediyorum.</label><br>
+
+  <!-- Textarea Input -->
+  <label for="message">Mesaj:</label><br>
+  <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+
+  <!-- Select Input -->
+  <label for="country">Ülke:</label><br>
+  <select id="country" name="country">
+    <option value="turkey">Türkiye</option>
+    <option value="usa">ABD</option>
+    <option value="germany">Almanya</option>
+  </select><br>
+
+  <!-- Submit Button -->
+  <input type="submit" value="Gönder">
+
+</form>
+
+</body>
+</html>
+<!-- Bu form, HTML'in çeşitli form özelliklerini ve çeşitli form elemanlarını içerir. Aşağıda belirtilen elementlerin her birini kullanır:
+
+1. Text input: Kullanıcının metin girebilmesi için kullanılır. Ad ve soyad için kullanıldı.
+
+2. Email input: Kullanıcının bir e-posta adresi girebilmesi için kullanılır. HTML otomatik olarak e-posta biçimini doğrular.
+
+3. Password input: Kullanıcının bir parola girebilmesi için kullanılır. Girişi gizler.
+
+4. Date input: Kullanıcının bir tarih girebilmesi için kullanılır.
+
+5. Radio buttons: Kullanıcının birden fazla seçenek arasından birini seçmesine olanak sağlar. Burada cinsiyet seçimi için kullanıldı.
+
+6. Checkbox: Kullanıcının bir seçeneği onaylamasını sağlar. Kullanım şartları onayı için kullanıldı.
+
+7. Textarea: Kullanıcının çok satırlı metin girebilmesi için kullanılır. Mesaj bölümünde kullanıldı.
+
+8. Select: Kullanıcının bir açılır menüden bir seçenek seçmesini sağlar. Ülke seçimi için kullanıldı.
+
+9. Submit button: Formun gönderilmesini tetikler.
+
+Her bir form elemanının label etiketi ile etiketlendiğine ve gerektiğinde çeşitli öznitelikler (ör. required, minlength vb.) ile kısıtlamaların belirlendiğine dikkat edin. Bu, formun kullanılabilirliğini ve erişilebilirliğini artırır. 
+
+Formun action özniteliği "/submit_form.html" olarak ayarlanmıştır, bu yüzden form gönderildiğinde kullanıcı bu sayfaya yönlendirilir. Ancak bu örnekte, "/submit_form.html" belirtilen URL'deki herhangi bir gerçek işlem yapılmamaktadır, çünkü bu yalnızca bir HTML örneğidir. Gerçek bir uygulamada, belirtilen URL'de bir sunucu tarafı dili (örneğin PHP, Node.js vb.) form verilerini işler ve uygun bir yanıt döndürür. -->

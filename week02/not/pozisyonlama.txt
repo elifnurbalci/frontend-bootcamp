@@ -1,0 +1,203 @@
+Pozisyonlama (static, relative, absolute, fixed, sticky)
+CSS Pozisyonlama ve Değerleri
+
+I. Pozisyonlama Nedir?
+
+CSS Pozisyonlama, HTML elemanlarının sayfa üzerinde nasıl konumlandırılacağını ve yerleştirileceğini belirlemek için kullanılır. Pozisyonlama, web sayfalarının düzenini ve tasarımını kontrol etmek için önemli bir araçtır. CSS'de beş farklı pozisyonlama değeri vardır: static, relative, absolute, fixed ve sticky.
+
+II. Static Pozisyonlama (position: static):
+
+static, varsayılan pozisyonlama değeridir ve elemanları normal akışta bırakır. Bu demektir ki, elemanlar belirlenen sıraya ve belirtilen yerlere göre düzenlenir. top, right, bottom, left, z-index gibi pozisyonlama özellikleri, static pozisyonlama için etkisizdir.
+
+Örnek:
+
+div {
+     position: static;
+     width: 100px;
+     height: 100px;
+     background-color: #007BFF;
+     color: #FFFFFF;
+     text-align: center;
+     line-height: 100px;
+     font-size: 16px;
+     border-radius: 5px;
+}
+Bu örnek, static pozisyonlama değerine sahip iki div elemanını yan yana koyduğumuzda normal akışta olduğu için birbirlerine çarpıştıklarını gösterir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            position: static;
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+</body>
+</html> 
+III. Relative Pozisyonlama (position: relative):
+
+relative pozisyonlama, elemanları normal akışa göre yerleştirirken, top, right, bottom, left gibi pozisyonlama özellikleri ile elemanın kendi yerini ayarlamamıza olanak tanır. Eğer pozisyon özellikleri belirtilmezse, eleman yine normal akışta kalır.
+
+Örnek:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            position: relative;
+            left: 50px;
+            top: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+</body>
+</html>   
+IV. Absolute Pozisyonlama (position: absolute):
+
+absolute pozisyonlama, elemanları normal akıştan çıkararak, en yakın üst öğe içinde konumlandırır. top, right, bottom, left gibi pozisyonlama özellikleri ile elemanın konumunu belirlememizi sağlar. Absolute pozisyonlu bir eleman, diğer elemanlarla etkileşime girmeksizin sayfa üzerinde istediğimiz yere konumlandırılabilir.
+
+Örnek:
+
+div {
+     position: absolute;
+     top: 100px;
+     left: 200px;
+}
+Bu örnek, absolute pozisyonlama değerine sahip bir div elemanını diğer içeriğin üzerine yerleştirdiğimizde normal akıştan çıktığını ve konumlandırıldığı yere göre görüldüğünü gösterir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .box {
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: #FFC300;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Normal akışta olan bir paragraf.</p>
+        <div class="box">Box (absolute)</div>
+    </div>
+</body>
+</html>     
+V. Fixed Pozisyonlama (position: fixed):
+
+fixed pozisyonlama, elemanı sayfanın görünen bölümüne sabitler. Sabitlenen eleman, sayfa kaydırılsa bile ekranda belirtilen konumda kalır. top, right, bottom, left gibi pozisyonlama özellikleri ile elemanın konumunu belirlememizi sağlar.
+
+Örnek:
+
+div {
+     position: fixed;
+     bottom: 20px;
+     right: 30px;
+}
+Bu örnek, fixed pozisyonlama değerine sahip bir div elemanını sayfanın belirli bir yerinde sabit tuttuğumuzda diğer içeriğin üzerine sabitlendiğini ve sayfa kaydırılsa bile sabit konumda kaldığını gösterir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+            background-color: #70AD47;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="box">Box (fixed)</div>
+</body>
+</html>
+VI. Sticky Pozisyonlama (position: sticky):
+
+sticky pozisyonlama, elemanı kullanıcının sayfayı kaydırdığı sürece normal akışta bırakır. Ancak eleman, belirlenen pozisyonuna ulaştığında (genellikle bir üst öğenin kenarına geldiğinde) sabitlenir. Yani, sticky pozisyonlu bir eleman, kullanıcının sayfayı kaydırdığı sürece sabitlenmez, ancak belirli bir pozisyona ulaşınca sabitlenir.
+
+Örnek:
+
+div {
+     position: sticky;
+     top: 50px;
+}
+Bu örnek, sticky pozisyonlama değerine sahip bir div elemanını belirli bir sütuna yapıştırdığımızda diğer içeriğin altından kayarak yapıştığını ve belirli bir noktada sabitlendiğini gösterir.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            height: 2000px;
+            padding-top: 50px;
+            background-color: #E3E3E3;
+        }
+
+        .box {
+            position: sticky;
+            top: 50px;
+            width: 100px;
+            height: 100px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="box">Box (sticky)</div>
+    </div>
+</body>
+</html>
