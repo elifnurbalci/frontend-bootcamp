@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Player from './components/player';
-import Button from './components/button';
+import Player from './components/Player';
+import Button from './components/Button';
 
 function App() {
   const [dice1, setDice1] = useState(1);

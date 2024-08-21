@@ -1,4 +1,4 @@
-import Dice from './dice';
+import Dice from './Dice';
 
 function Player({ name, setName, diceValue }) {
   return (
