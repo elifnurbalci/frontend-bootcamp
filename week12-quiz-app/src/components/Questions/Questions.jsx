@@ -5,13 +5,15 @@ import { useState, useEffect } from 'react';
 function Questions() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
     const questionInterval = setInterval(() => {
       setCurrentQuestionIndex((prevIndex) =>
         prevIndex === questions.length - 1 ? 0 : prevIndex + 1
       );
-      setShowOptions(false); 
+      setShowOptions(false);
+      setSelectedOption(null);
     }, 30000);
 
     return () => clearInterval(questionInterval);
@@ -25,6 +27,10 @@ function Questions() {
     return () => clearTimeout(optionTimeout);
   }, [currentQuestionIndex]);
 
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
@@ -37,7 +43,17 @@ function Questions() {
         {showOptions ? (
           <ul>
             {currentQuestion.options.map((option, optionIndex) => (
-              <li key={optionIndex}>{option}</li>
+              <li key={optionIndex} className='option-item'>                
+              <label>
+              <input
+                type="radio"
+                name="question"
+                value={option}
+                checked={selectedOption === option}
+                onChange={handleOptionChange}
+              />
+              <span className="option-label"></span> {option}
+            </label></li>
             ))}
           </ul>
         ) : (
