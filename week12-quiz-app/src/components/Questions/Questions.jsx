@@ -14,7 +14,7 @@ function Questions({setIsCompleted, setIsActive, setScore, setWrong}) {
       );
       setShowOptions(false);
       setSelectedOption(null);
-    }, 3000);
+    }, 30000);
 
     return () => clearInterval(questionInterval);
   }, []);
@@ -22,7 +22,7 @@ function Questions({setIsCompleted, setIsActive, setScore, setWrong}) {
   useEffect(() => {
     const optionTimeout = setTimeout(() => {
       setShowOptions(true);
-    }, 400);
+    }, 4000);
 
     return () => clearTimeout(optionTimeout);
   }, [currentQuestionIndex]);
