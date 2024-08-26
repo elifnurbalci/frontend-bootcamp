@@ -1,54 +1,49 @@
 const questions = [
   {
-    question: "Çin Seddini oluşturan taşlar birbirine ne ile tutturulmuştur?",
-    options: ["Bambu Harcı", "Anne Duası", "Pirinç Unu", "Noodle"],
-    answer: "Pirinç Unu",
-    media: "./pictures/cin-seddi.jpg",
+    question: "Which of the following is a fundamental principle of British life?",
+    options: ["Communism", "Intolerance", "Individual liberty", "Inequity"],
+    answer: "Individual liberty",
+    media: "./pictures/question1.png",
   },
   {
-    question: "İlk Pamuk şekeri bulan kişinin mesleği nedir?",
-    options: ["Gıda Mühendisi", "Diş Doktoru", "Ev Hanımı", "Güzellik Uzmanı"],
-    answer: "Diş Doktoru",
-    media: "./pictures/pamuk.jpg",
-  },
-  {
-    question:
-      "Tarkan'ın 'Hüp' klibini izledikten sonra gaza gelip 'Tarkan keşke beni hüpletseydi' diye açıklamda bulunan kişi kimdir?",
-    options: ["Gülben Ergen", "Hülya Avşar", "Harika Avcı", "Sevtap Parman"],
-    answer: "Gülben Ergen",
-    media: "./pictures/tarkan.jpg",
-  },
-  {
-    question: "Pteronofobi nedir?",
-    options: [
-      "Yeşil ışık yanar yanmaz korna çalacak korkusu",
-      "Fakir kalma korkusu",
-      "Taksi bulamama korkusu",
-      "Kuş tüyüyle gıdıklanma korkusu",
-    ],
-    answer: "Kuş tüyüyle gıdıklanma korkusu",
-    media: "./pictures/fobi.jpg",
+    question: "What is the name of the long war that English kings fought with France in the middle ages?",
+    options: ["The Crimean War", "The First World War", "The Hundred Years War", "The Boer War"],
+    answer: "The Hundred Years War",
+    media: "./pictures/question2.png",
   },
   {
     question:
-      "Ortalama ömürleri 5 yıl olan Japon balıklarının en uzun yaşayanı Tish, bütün istatistikleri alt üst ederek kaç yıl boyunca hayata tutunmayı başarmıştır?",
-    options: ["43", "78", "23", "99"],
-    answer: "43",
-    media: "./pictures/balik.jpg",
+      "What is the name of the tour guides that tell visitors stories about the Tower of London’s history?",
+    options: ["Knights", "Chartists", "Suffragettes", "Beefeaters"],
+    answer: "Beefeaters",
+    media: "./pictures/question3.png",
+  },
+  {
+    question: "Who is the patron Saint of Wales?",
+    options: ["St David", "St George", "St Patrick", "St Andrew"],
+    answer: "St David",
+    media: "./pictures/question4.png",
   },
   {
     question:
-      "90'lara damgasını vuran 'Bandıra Bandıra' şarkısının söz yazarı kimdir?",
-    options: ["Sezen Aksu", "Sibel Can", "Mustafa Sandal", "Bülent Ersoy"],
-    answer: "Mustafa Sandal",
-    media: "./pictures/bandira.jpg",
+      "Which of the following is not a valid UK coin?",
+    options: ["1p", "5p", "25p", "£1"],
+    answer: "25p",
+    media: "./pictures/question5.jpeg",
   },
   {
     question:
-      "Hangi şarkıcımız yine kendisi gibi şarkıcı olan sevgilisinden ayrıldıktan sonra tam evinin karşısındaki apartmanın tamamını kendi posteriyle kaplatmıştır?",
-    options: ["Hande Yener", "Hadise", "Gülşen", "Simge"],
-    answer: "Hadise",
-    media: "./pictures/billboard.jpg",
+      "Where does golf come from?",
+    options: ["Wales", "Australia", "Ireland", "Scotland"],
+    answer: "Scotland",
+    media: "./pictures/question6.jpg",
+  },
+  {
+    question:
+      "Which novel written by JRR Tolkien was voted the country’s best-loved novel in 2003?",
+    options: ["Oliver Twist", "James Bond", "Pride and Prejudice", "The Lord of the Rings"],
+    answer: "The Lord of the Rings",
+    media: "./pictures/question7.png",
   },
   {
     question: "Antik Roma'da kadınlar parfüm olarak ne kullanıyordu?",

@@ -8,13 +8,15 @@ import Result from './components/Result/Result.jsx'
 function App() {
   const [isActive, setIsActive] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [score, setScore] = useState(0);
+  const [wrong, setWrong] = useState(0);
 
   return (
     <>
-      <h1>Quiz App</h1>
         <div className="App">
-          {isActive ? <Intro setIsActive={setIsActive}/> : <Questions setIsCompleted={setIsCompleted} />}
-          {isCompleted && <Result />}
+        {isActive && !isCompleted && <Intro setIsActive={setIsActive} />}
+        {!isActive && !isCompleted && <Questions setIsCompleted={setIsCompleted} setIsActive={setIsActive} setScore={setScore} setWrong={setWrong}/>}
+        {isCompleted && <Result score={score} wrong={wrong} />}
         </div>
     </>
   )

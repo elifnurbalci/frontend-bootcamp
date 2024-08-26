@@ -2,12 +2,10 @@ import './questions.css'
 import questions from '/public/questions.js'
 import { useState, useEffect } from 'react';
 
-function Questions({setIsCompleted}) {
+function Questions({setIsCompleted, setIsActive, setScore, setWrong}) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [score, setScore] = useState(0);
-  const [showResultButton, setShowResultButton] = useState(false);
 
   useEffect(() => {
     const questionInterval = setInterval(() => {
@@ -36,28 +34,20 @@ function Questions({setIsCompleted}) {
     setSelectedOption(selected);
     
     if (selected === currentAnswer) {
-      setScore(prevScore => prevScore + 1);
+        setScore(prevScore => prevScore + 1);
+    } else {
+        setWrong(prev => prev +1);
     }
   };
 
   useEffect(() => {
-    if (selectedOption !== null && selectedOption === currentAnswer) {
-      setScore(prevScore => prevScore + 1);
+    if (currentQuestionIndex === questions.length - 1) {
+      setIsCompleted(true);
+      setIsActive(false);
     }
-    setSelectedOption(null);
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, questions.length, setIsCompleted, setIsActive]);
 
   const currentQuestion = questions[currentQuestionIndex];
-
-  if (currentQuestionIndex === (questions.length-1)) {
-    setIsCompleted(true);
-  }
-
-  useEffect(() => {
-    if (currentQuestionIndex === questions.length - 1) {
-      setShowResultButton(true);
-    }
-  }, [currentQuestionIndex]);
 
   return (
     <div className="questions">
@@ -85,11 +75,6 @@ function Questions({setIsCompleted}) {
         ) : (
           <p>......</p>
         )}
-        {showResultButton && (
-        <button onClick={() => setIsCompleted(true)}>
-          Show Result
-        </button>
-      )}
       </div>
     </div>
   );
