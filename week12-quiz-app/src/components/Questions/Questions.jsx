@@ -36,11 +36,24 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
   const handleOptionChange = (e) => {
     const selected = e.target.value;
     setSelectedOption(selected);
+  };
 
-    if (selected === currentAnswer) {
+  const handleNextClick = () => {
+    // Check the answer and update the score or wrong count
+    if (selectedOption === currentAnswer) {
       setScore((prevScore) => prevScore + 1);
     } else {
       setWrong((prev) => prev + 1);
+    }
+
+    // Move to the next question
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      setShowOptions(false);
+      setSelectedOption(null);
+    } else {
+      setIsCompleted(true);
+      setIsActive(false);
     }
   };
 
@@ -72,6 +85,13 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
           </ul>
         ) : (
           <p>......</p>
+        )}
+        
+        {/* Next button to evaluate and proceed to the next question */}
+        {showOptions && (
+          <button className='next-option' onClick={handleNextClick} disabled={!selectedOption}>
+            Next
+          </button>
         )}
       </div>
     </div>
