@@ -30,7 +30,7 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong, setDetaile
         setIsActive(false);
         clearInterval(questionInterval);
       }
-    }, 30000);
+    }, 10000);
 
     return () => clearInterval(questionInterval);
   }, [currentQuestionIndex, questions.length, setIsCompleted, setIsActive, selectedOption]);
