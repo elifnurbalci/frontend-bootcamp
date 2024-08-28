@@ -2,13 +2,25 @@ import './questions.css';
 import questions from '/public/questions.js';
 import { useState, useEffect } from 'react';
 
-function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
+function Questions({ setIsCompleted, setIsActive, setScore, setWrong, setDetailedResult }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
     const questionInterval = setInterval(() => {
+      if (selectedOption === null) {
+        setDetailedResult((prev) => [
+          ...prev,
+          {
+            id: prev.length + 1,
+            userAnswer: "Empty",
+            correctAnswer: questions[currentQuestionIndex]?.answer,
+            result: 'Empty',
+          }
+        ]);
+      }
+
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         setShowOptions(false);
@@ -18,15 +30,15 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
         setIsActive(false);
         clearInterval(questionInterval);
       }
-    }, 30000);
+    }, 3000);
 
     return () => clearInterval(questionInterval);
-  }, [currentQuestionIndex, questions.length, setIsCompleted, setIsActive]);
+  }, [currentQuestionIndex, questions.length, setIsCompleted, setIsActive, selectedOption]);
 
   useEffect(() => {
     const optionTimeout = setTimeout(() => {
       setShowOptions(true);
-    }, 4000);
+    }, 400);
 
     return () => clearTimeout(optionTimeout);
   }, [currentQuestionIndex]);
@@ -39,14 +51,42 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
   };
 
   const handleNextClick = () => {
-    // Check the answer and update the score or wrong count
-    if (selectedOption === currentAnswer) {
-      setScore((prevScore) => prevScore + 1);
+    if (selectedOption !== null) {
+      if (selectedOption === currentAnswer) {
+        setScore((prevScore) => prevScore + 1);
+        setDetailedResult((prev) => [
+          ...prev,
+          {
+            id: prev.length + 1,
+            userAnswer: selectedOption,
+            correctAnswer: currentAnswer,
+            result: 'True'
+          }
+        ]);
+      } else {
+        setWrong((prev) => prev + 1);
+        setDetailedResult((prev) => [
+          ...prev,
+          {
+            id: prev.length + 1,
+            userAnswer: selectedOption,
+            correctAnswer: currentAnswer,
+            result: 'False'
+          }
+        ]);
+      }
     } else {
-      setWrong((prev) => prev + 1);
+      setDetailedResult((prev) => [
+        ...prev,
+        {
+          id: prev.length + 1,
+          userAnswer: "Empty",
+          correctAnswer: currentAnswer,
+          result: 'Empty'
+        }
+      ]);
     }
 
-    // Move to the next question
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setShowOptions(false);
@@ -86,8 +126,6 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong }) {
         ) : (
           <p>......</p>
         )}
-        
-        {/* Next button to evaluate and proceed to the next question */}
         {showOptions && (
           <button className='next-option' onClick={handleNextClick} disabled={!selectedOption}>
             Next

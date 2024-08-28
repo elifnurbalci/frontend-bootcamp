@@ -4,3 +4,6 @@
     align-items: center;
     justify-content: center;
 }
+.options li {
+    list-style-type: none;
+}
