@@ -9,7 +9,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: rgb(146, 144, 144)
+  background-color: rgb(221, 222, 218)
 }
 
 .container {
@@ -17,7 +17,7 @@ body{
 
 }
 .title {
-  background-color: rgb(179, 178, 178);
+  background-color: rgb(255, 255, 255);
   padding:1rem 0;
   margin-bottom: 0.7rem;
 
@@ -36,9 +36,9 @@ h1{
 }
 
 .money {
-  background-color: #25C484;
+  background-color: #337241;
   padding:1rem 0;
-  color: rgb(1, 1, 1);
+  color: rgb(252, 252, 252);
   margin-bottom: 0.7rem;
 }
 
@@ -50,7 +50,10 @@ h1{
 
 .product {
   padding: 1.5rem 0;
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product img {
@@ -71,3 +74,9 @@ h1{
   margin-bottom: 0;
 }
 
+.product-button {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 1rem;
+}

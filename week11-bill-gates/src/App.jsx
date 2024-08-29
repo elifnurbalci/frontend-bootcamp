@@ -15,20 +15,20 @@ function App() {
     { id: 4, name: 'Movie Ticket', image: '/images/movie-ticket.jpg', price: 12, quantity: 0 },
     { id: 5, name: 'Book', image: '/images/book.jpg', price: 15, quantity: 0 },
     { id: 6, name: 'Lobster Dinner', image: '/images/lobster-dinner.jpg', price: 45, quantity: 0 },
-    { id: 7, name: 'Big Mac', image: '/images/big-mac.jpg', price: 2, quantity: 0 },
-    { id: 8, name: 'Flip Flops', image: '/images/flip-flops.jpg', price: 3, quantity: 0 },
-    { id: 9, name: 'Coca-Cola Pack', image: '/images/coca-cola-pack.jpg', price: 5, quantity: 0 },
-    { id: 10, name: 'Movie Ticket', image: '/images/movie-ticket.jpg', price: 12, quantity: 0 },
-    { id: 11, name: 'Book', image: '/images/book.jpg', price: 15, quantity: 0 },
-    { id: 12, name: 'Lobster Dinner', image: '/images/lobster-dinner.jpg', price: 45, quantity: 0 },
+    { id: 7, name: 'Big Mac1', image: '/images/big-mac.jpg', price: 2, quantity: 0 },
+    { id: 8, name: 'Flip Flops1', image: '/images/flip-flops.jpg', price: 3, quantity: 0 },
+    { id: 9, name: 'Coca-Cola Pack1', image: '/images/coca-cola-pack.jpg', price: 5, quantity: 0 },
+    { id: 10, name: 'Movie Ticket1', image: '/images/movie-ticket.jpg', price: 12, quantity: 0 },
+    { id: 11, name: 'Book1', image: '/images/book.jpg', price: 15, quantity: 0 },
+    { id: 12, name: 'Lobster Dinner1', image: '/images/lobster-dinner.jpg', price: 45, quantity: 0 },
   ]);
 
 
   const handleBuy = (product) => {
     if (balance >= product.price) {
       setBalance(balance - product.price);
-      const updatedProductList = productList.map(product =>
-        product.id === product.id ? { ...product, quantity: product.quantity + 1 } : p
+      const updatedProductList = productList.map(p =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
       );
       setProductList(updatedProductList);
 
