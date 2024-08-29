@@ -20,7 +20,6 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong, setDetaile
           }
         ]);
       }
-
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         setShowOptions(false);
@@ -28,7 +27,6 @@ function Questions({ setIsCompleted, setIsActive, setScore, setWrong, setDetaile
       } else {
         setIsCompleted(true);
         setIsActive(false);
-        clearInterval(questionInterval);
       }
     }, 10000);
 
