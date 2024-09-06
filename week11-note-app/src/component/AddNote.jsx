@@ -1,6 +1,15 @@
+import { useState } from "react"
+
 function AddNote() {
-  const handleClick = () => {
-  }
+  
+  const handleClick = (color) => {
+    document.querySelectorAll('.color-tag span').forEach((s) => {
+      s.style.display = 'none';
+    });
+    let span = document.querySelector(`.${color} span`);
+    span.style.display = 'inline';
+  };
+
 
   return (
     <div>
@@ -9,11 +18,21 @@ function AddNote() {
         <textarea className="input-text" name="" id="" placeholder="Enter your note here..."></textarea>
         <div className="input-bottom">
         <div className="color-tag">
-          <div className="pink" onClick={handleClick}>*</div>
-          <div className="purple" onClick={handleClick}>*</div>
-          <div className="yellow" onClick={handleClick}>*</div>
-          <div className="blue" onClick={handleClick}>*</div>
-          <div className="green" onClick={handleClick}>*</div>
+          <div className="pink" onClick={() => handleClick("pink")}>
+          <span className="material-symbols-outlined">check</span>
+          </div>
+          <div className="purple" onClick={() => handleClick("purple")}>
+            <span className="material-symbols-outlined">check</span>
+          </div>
+          <div className="yellow" onClick={() => handleClick("yellow")}>
+            <span className="material-symbols-outlined">check</span>
+          </div>
+          <div className="blue" onClick={() => handleClick("blue")}>
+            <span className="material-symbols-outlined">check</span>
+          </div>
+          <div className="green" onClick={() => handleClick("green")}>
+            <span className="material-symbols-outlined">check</span>
+        </div>
         </div>
         <button className="btn-add">ADD</button>
         </div>
