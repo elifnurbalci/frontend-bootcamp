@@ -1,17 +1,18 @@
 import { useNoteContext } from "../context/NoteProvider";
 
 function NoteList() {
-  const {note, setNote, noteList, setNoteList} = useNoteContext();
+  const {noteList} = useNoteContext();
 
   return (
     <div>
-      <ul>
+      <ul className="note-list">
         {noteList.map((note) => (
-          <div className='note-list' key={note.id}>
-            <li>
-              {note.title}
-            </li>
-          </div>
+          <li
+            className="note-detail"
+            key={note.id}
+            style={{ backgroundColor: note.color }}  >
+            {note.title}
+          </li>
         ))}
       </ul>
     </div>

@@ -127,4 +127,30 @@
   display: none;
 }
 
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 5px;
+  margin: 5px;
+  padding-left: 20px;
+  justify-content: left;
+}
+
+.note-detail {
+  color: gray;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  width: 160px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+
 

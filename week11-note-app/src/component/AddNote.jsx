@@ -1,18 +1,9 @@
 import { useNoteContext } from "../context/NoteProvider";
 import { useEffect, useState } from "react";
-import NoteList from "./NoteList";
 
 function AddNote() {
 
-  const {note, setNote, noteList, setNoteList, search, setSearch} = useNoteContext();
-  
-  const handleClick = (color) => {
-    document.querySelectorAll('.color-tag span').forEach((s) => {
-      s.style.display = 'none';
-    });
-    let span = document.querySelector(`.${color} span`);
-    span.style.display = 'inline';
-  };
+  const {note, setNote, setNoteList, search, setSearch, selectedColor, setSelectedColor} = useNoteContext();
 
   const [text, setText] = useState("");
 
@@ -21,7 +12,10 @@ function AddNote() {
   };
 
   const handleSave = () => {
-    setNote(text);
+    setNote({
+      text: text,
+      color: selectedColor
+    });
   };
 
   useEffect(() => {
@@ -29,7 +23,7 @@ function AddNote() {
       const addNoteFunc = (note) => {
         setNoteList((prev) => [
           ...prev,
-          { id: prev.length + 1, title: `Note ${prev.length + 1}`, value: note },
+          { id: prev.length + 1, title: `Note ${prev.length + 1}`, color: note.color, value: note.text },
         ]);
       };
       addNoteFunc(note);
@@ -39,6 +33,15 @@ function AddNote() {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   }
+
+  const handleClick = (color) => {
+    document.querySelectorAll('.color-tag span').forEach((s) => {
+      s.style.display = 'none';
+    });
+    let span = document.querySelector(`.${color} span`);
+    span.style.display = 'inline';
+    setSelectedColor(color);
+  };
 
   return (
     <div>
