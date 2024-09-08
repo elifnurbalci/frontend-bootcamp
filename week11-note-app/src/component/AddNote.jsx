@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useNoteContext } from "../context/NoteProvider";
+import { useEffect, useState } from "react";
+import NoteList from "./NoteList";
 
 function AddNote() {
+
+  const {note, setNote, noteList, setNoteList, search, setSearch} = useNoteContext();
   
   const handleClick = (color) => {
     document.querySelectorAll('.color-tag span').forEach((s) => {
@@ -10,12 +14,37 @@ function AddNote() {
     span.style.display = 'inline';
   };
 
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleSave = () => {
+    setNote(text);
+  };
+
+  useEffect(() => {
+    if (note) {
+      const addNoteFunc = (note) => {
+        setNoteList((prev) => [
+          ...prev,
+          { id: prev.length + 1, title: `Note ${prev.length + 1}`, value: note },
+        ]);
+      };
+      addNoteFunc(note);
+    }
+  }, [note]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
 
   return (
     <div>
-      <input className= "search" type="text" name="" id="" placeholder="Search..."/>
+      <input className= "search" type="text" placeholder="Search..." value="" onChange={handleSearch}/>
       <div className="add-note">
-        <textarea className="input-text" name="" id="" placeholder="Enter your note here..."></textarea>
+        <textarea className="input-text" placeholder="Enter your note here..." value={text} onChange={handleChange}></textarea>
         <div className="input-bottom">
         <div className="color-tag">
           <div className="pink" onClick={() => handleClick("pink")}>
@@ -34,7 +63,7 @@ function AddNote() {
             <span className="material-symbols-outlined">check</span>
         </div>
         </div>
-        <button className="btn-add">ADD</button>
+        <button className="btn-add" onClick={handleSave}>ADD</button>
         </div>
       </div>
     </div>

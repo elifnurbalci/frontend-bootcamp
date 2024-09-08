@@ -79,45 +79,52 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .purple {
   background-color: rgba(186, 104, 200, 1);
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .yellow {
   background-color: rgba(255, 213, 78, 1);
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .blue {
   background-color: rgba(79, 196, 247, 1);
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .green {
   background-color: rgba(174, 213, 129, 1);
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  color: gray;
+  font-weight: bold;
+  color: rgb(115, 115, 115);
   display: none;
 }
+
 
