@@ -1,8 +1,28 @@
-# React + Vite
+# Capstone Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Link:
 
-Currently, two official plugins are available:
+### Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Single Page App was made using React Router.
+
+- Home Page
+- Publisher
+- Category
+- Book
+- Author
+- Book Retrieval
+
+CRUD operations of each page were completed within the relevant page.
+
+If CRUD operations fail, the user will be informed (Modal was used)
+
+1200px
+
+Technology used in design: CSS + Material
+
+Publisher, Category, Book, Author, Book Retrieval Data;
+- Reading operations
+- Adding operations
+- Updating operations
+- Deleting operations
