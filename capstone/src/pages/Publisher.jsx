@@ -38,7 +38,7 @@ function Publisher() {
 
     const handleAddPublisher = () => {
         axios.post(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers", newPublisher)
-        .then((res) => {
+        .then(() => {
             setUpdate(false);
             setNewPublisher(initialPublisher);
         })
@@ -51,8 +51,8 @@ function Publisher() {
         axios.put(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers/" + updatedPublisher.id, updatedPublisher)
         .then(() => {
             setUpdate(false);
-            setIsNew(false);
             setUpdatedPublisher(initialPublisher);
+            setIsNew(true);
         })
         .catch((error) => {
             console.log(error);
