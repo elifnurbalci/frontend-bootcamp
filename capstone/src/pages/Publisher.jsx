@@ -14,9 +14,9 @@ function Publisher() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(import.meta.env.VITE_APP_BASE_URL + "api/v1/publishers")
+        axios.get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers")
         .then((res) => {
-            setPublishers(res.data.content);
+            setPublishers(res.data);
             setLoading(false);
         });
     }, []);
@@ -27,7 +27,7 @@ function Publisher() {
     }
 
     const handleAddPublisher = () => {
-        axios.post(import.meta.env.VITE_APP_BASE_URL + "api/v1/publishers",publisher)
+        axios.post(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers", publisher)
         .then((res) => {
             console.log(res);
         })
