@@ -93,6 +93,7 @@ function Publisher() {
 
     return (
         <>
+        <h1>Add Publisher</h1>
         <Box
         component="form"
         sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
@@ -104,7 +105,7 @@ function Publisher() {
         <TextField id="outlined-basic" label="Year" variant="outlined" name="establishmentYear" value={isNew ? newPublisher.establishmentYear : updatedPublisher.establishmentYear} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         <TextField id="outlined-basic" label="Address" variant="outlined" name="address" value={isNew ? newPublisher.address : updatedPublisher.address} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         </Box>
-        <h1>Publisher List</h1>
+        <h2>Publisher List</h2>
         {publishers?.map((publisher, index) => (
             <div key={index}>
                 <div>

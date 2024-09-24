@@ -1,26 +1,4 @@
 import { NavLink } from 'react-router-dom';
-
-// const navLink= ['author', 'book', 'borrowing', 'category', 'publisher'];
-
-// function NavBar() {
-//   return (
-//     <nav>
-//       <ul>
-//         {navLink.map((nav) =>(
-//             <li key={nav}>
-//                 <NavLink to={`/${nav.toLowerCase()}`}>
-//                     {nav}
-//                 </NavLink>
-//             </li>
-//         ))}
-//       </ul>
-//     </nav>
-//   );
-// }
-
-// export default NavBar;
-
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -31,7 +9,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import AdbIcon from '@mui/icons-material/Adb';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const pages= ['Author', 'Book', 'Borrowing', 'Category', 'Publisher'];
 
@@ -50,12 +28,12 @@ function NavBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AutoStoriesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href='/'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -102,12 +80,12 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <AutoStoriesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -119,7 +97,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            LIBRARY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

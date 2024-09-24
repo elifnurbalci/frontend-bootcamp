@@ -1,6 +1,8 @@
 function Welcome() {
   return (
-    <div>Welcome</div>
+    <div>
+      <img src="../../images/welcome.jpg" alt="welcome" />
+    </div>
   )
 }
 export default Welcome

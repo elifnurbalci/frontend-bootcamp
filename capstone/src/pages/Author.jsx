@@ -93,6 +93,7 @@ function Author() {
 
     return (
         <>
+        <h1>Add Author</h1>
         <Box
         component="form"
         sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
@@ -103,7 +104,7 @@ function Author() {
         <TextField id="outlined-basic" type="date" variant="outlined" name="birthDate" value={isNew ? newAuthor.birthDate : updatedAuthor.birthDate} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         <TextField id="outlined-basic" label="Country" variant="outlined" name="country" value={isNew ? newAuthor.country : updatedAuthor.country} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         </Box>
-        <h1>Author List</h1>
+        <h2>Author List</h2>
         {authors?.map((author, index) => (
             <div key={index}>
                 <div>
