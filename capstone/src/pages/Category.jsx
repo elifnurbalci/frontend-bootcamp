@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
+import LinearProgress from '@mui/material/LinearProgress';
 
 function Category() {
     const initialCategory = {
@@ -19,7 +19,6 @@ function Category() {
     const [categories, setCategories] = useState([]);
     const [update, setUpdate] = useState(false);
     const [isNew, setIsNew] = useState(true);
-
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -32,7 +31,11 @@ function Category() {
     }, [update]);
 
     if (loading) {
-        return <div>Loading........</div>
+        return <div>
+          <Box sx={{ width: '100%' }}>
+            <LinearProgress />
+          </Box>
+        </div>
     }
 
     const handleAddCategory = () => {

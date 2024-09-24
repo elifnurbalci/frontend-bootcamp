@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
+import LinearProgress from '@mui/material/LinearProgress';
 
 function Author() {
     const initialAuthor = {
@@ -32,7 +32,11 @@ function Author() {
     }, [update]);
 
     if (loading) {
-        return <div>Loading........</div>
+        return <div>
+          <Box sx={{ width: '100%' }}>
+            <LinearProgress />
+          </Box>
+        </div>
     }
 
     const handleAddAuthor = () => {

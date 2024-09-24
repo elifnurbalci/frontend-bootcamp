@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
+import LinearProgress from '@mui/material/LinearProgress';
 
 function Publisher() {
     const initialPublisher = {
@@ -33,7 +33,11 @@ function Publisher() {
     }, [update]);
 
     if (loading) {
-        return <div>Loading........</div>
+        return <div>
+          <Box sx={{ width: '100%' }}>
+            <LinearProgress />
+          </Box>
+        </div>
     }
 
     const handleAddPublisher = () => {
