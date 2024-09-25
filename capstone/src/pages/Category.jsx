@@ -8,7 +8,6 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { colors } from "@mui/material";
 
 function Category() {
     const initialCategory = {

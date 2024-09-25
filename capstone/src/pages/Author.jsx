@@ -7,6 +7,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
 import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 
 
 function Author() {
@@ -15,14 +16,29 @@ function Author() {
         birthDate: "",
         country: "",
     };
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'rgba(255, 0, 0, 0.6)',
+        borderRadius: '8px',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+        color: 'black',
+        boxShadow: 24,
+        p: 4,
+    };
 
     const [newAuthor, setNewAuthor] = useState(initialAuthor);
     const [updatedAuthor, setUpdatedAuthor] = useState(initialAuthor);
     const [authors, setAuthors] = useState([]);
     const [update, setUpdate] = useState(false);
     const [isNew, setIsNew] = useState(true);
-
     const [loading, setLoading] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/authors")
@@ -48,7 +64,8 @@ function Author() {
             setNewAuthor(initialAuthor);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -60,7 +77,8 @@ function Author() {
             setIsNew(true);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -72,7 +90,8 @@ function Author() {
             setIsNew(true);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -99,33 +118,49 @@ function Author() {
 
     return (
         <>
-        <h1>Add Author</h1>
-        <Box
-        component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-        noValidate
-        autoComplete="off"
-        >
-        <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newAuthor.name : updatedAuthor.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        <TextField id="outlined-basic" type="date" variant="outlined" name="birthDate" value={isNew ? newAuthor.birthDate : updatedAuthor.birthDate} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        <TextField id="outlined-basic" label="Country" variant="outlined" name="country" value={isNew ? newAuthor.country : updatedAuthor.country} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        </Box>
-        <h2>Author List</h2>
-        {authors?.map((author, index) => (
-            <div key={index}>
-                <div>
-                    <EditNoteIcon onClick={() => handleEditInput(author)} />
-                    {author.name}
-                    <HighlightOffIcon onClick={() => handleDeleteAuthor(author)} />
+            <h1>Add Author</h1>
+            <Box
+            component="form"
+            sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+            noValidate
+            autoComplete="off"
+            >
+            <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newAuthor.name : updatedAuthor.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            <TextField id="outlined-basic" type="date" variant="outlined" name="birthDate" value={isNew ? newAuthor.birthDate : updatedAuthor.birthDate} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            <TextField id="outlined-basic" label="Country" variant="outlined" name="country" value={isNew ? newAuthor.country : updatedAuthor.country} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            </Box>
+            <h2>Author List</h2>
+            {authors?.map((author, index) => (
+                <div key={index}>
+                    <div>
+                        <EditNoteIcon onClick={() => handleEditInput(author)} />
+                        {author.name}
+                        <HighlightOffIcon onClick={() => handleDeleteAuthor(author)} />
+                        </div>
+                        <br />
                     </div>
-                    <br />
-                </div>
-        ))}
-        {isNew ? (
-            <Button variant="contained" onClick={handleAddAuthor}>SAVE</Button>
-        ) : (
-            <Button variant="contained" onClick={handleUpdateAuthor}>UPDATE</Button>
-            )}
+            ))}
+            {isNew ? (
+                <Button variant="contained" onClick={handleAddAuthor}>SAVE</Button>
+            ) : (
+                <Button variant="contained" onClick={handleUpdateAuthor}>UPDATE</Button>
+                )}
+            <Modal
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="keep-mounted-modal-title"
+            aria-describedby="keep-mounted-modal-description"
+            >
+            <Box sx={style}>
+                <Typography id="keep-mounted-modal-title" variant="h6" component="h2" fontWeight={800}>
+                Error
+                </Typography>
+                <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+                {message}
+                </Typography>
+            </Box>
+            </Modal>
         </>
   )
 }

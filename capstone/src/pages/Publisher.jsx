@@ -7,6 +7,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
 import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 
 
 function Publisher() {
@@ -16,14 +17,29 @@ function Publisher() {
         establishmentYear: "",
         address: "",
     };
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'rgba(255, 0, 0, 0.6)',
+        borderRadius: '8px',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+        color: 'black',
+        boxShadow: 24,
+        p: 4,
+    };
 
     const [newPublisher, setNewPublisher] = useState(initialPublisher);
     const [updatedPublisher, setUpdatedPublisher] = useState(initialPublisher);
     const [publishers, setPublishers] = useState([]);
     const [update, setUpdate] = useState(false);
     const [isNew, setIsNew] = useState(true);
-
     const [loading, setLoading] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers")
@@ -49,7 +65,8 @@ function Publisher() {
             setNewPublisher(initialPublisher);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -61,7 +78,8 @@ function Publisher() {
             setIsNew(true);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -72,7 +90,8 @@ function Publisher() {
             setNewPublisher(initialPublisher);
         })
         .catch((error) => {
-            console.log(error);
+            setMessage(error.message);
+            setOpen(true);
         })
     }
 
@@ -99,34 +118,50 @@ function Publisher() {
 
     return (
         <>
-        <h1>Add Publisher</h1>
-        <Box
-        component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-        noValidate
-        autoComplete="off"
-        >
-        <TextField id="outlined-basic" label="ID" variant="outlined" name="id" value={isNew ? newPublisher.id : updatedPublisher.id} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newPublisher.name : updatedPublisher.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        <TextField id="outlined-basic" label="Year" variant="outlined" name="establishmentYear" value={isNew ? newPublisher.establishmentYear : updatedPublisher.establishmentYear} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        <TextField id="outlined-basic" label="Address" variant="outlined" name="address" value={isNew ? newPublisher.address : updatedPublisher.address} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-        </Box>
-        <h2>Publisher List</h2>
-        {publishers?.map((publisher, index) => (
-            <div key={index}>
-                <div>
-                    <EditNoteIcon onClick={() => handleEditInput(publisher)} />
-                    {publisher.name}
-                    <HighlightOffIcon onClick={() => handleDeletePublisher(publisher)} />
+            <h1>Add Publisher</h1>
+            <Box
+            component="form"
+            sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+            noValidate
+            autoComplete="off"
+            >
+            <TextField id="outlined-basic" label="ID" variant="outlined" name="id" value={isNew ? newPublisher.id : updatedPublisher.id} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newPublisher.name : updatedPublisher.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            <TextField id="outlined-basic" label="Year" variant="outlined" name="establishmentYear" value={isNew ? newPublisher.establishmentYear : updatedPublisher.establishmentYear} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            <TextField id="outlined-basic" label="Address" variant="outlined" name="address" value={isNew ? newPublisher.address : updatedPublisher.address} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            </Box>
+            <h2>Publisher List</h2>
+            {publishers?.map((publisher, index) => (
+                <div key={index}>
+                    <div>
+                        <EditNoteIcon onClick={() => handleEditInput(publisher)} />
+                        {publisher.name}
+                        <HighlightOffIcon onClick={() => handleDeletePublisher(publisher)} />
+                        </div>
+                        <br />
                     </div>
-                    <br />
-                </div>
-        ))}
-        {isNew ? (
-            <Button variant="contained" onClick={handleAddPublisher}>SAVE</Button>
-        ) : (
-            <Button variant="contained" onClick={handleUpdatePublisher}>UPDATE</Button>
-            )}
+            ))}
+            {isNew ? (
+                <Button variant="contained" onClick={handleAddPublisher}>SAVE</Button>
+            ) : (
+                <Button variant="contained" onClick={handleUpdatePublisher}>UPDATE</Button>
+                )}
+            <Modal
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="keep-mounted-modal-title"
+            aria-describedby="keep-mounted-modal-description"
+            >
+            <Box sx={style}>
+                <Typography id="keep-mounted-modal-title" variant="h6" component="h2" fontWeight={800}>
+                Error
+                </Typography>
+                <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+                {message}
+                </Typography>
+            </Box>
+            </Modal>
         </>
   )
 }
