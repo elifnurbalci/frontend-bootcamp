@@ -12,6 +12,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CategoryIcon from '@mui/icons-material/Category';
+import Snackbar from '@mui/material/Snackbar';
 
 function Category() {
     const initialCategory = {
@@ -41,6 +42,9 @@ function Category() {
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
+    const [snackOpen, setSnackOpen] = useState(false);
+    const [snackMessage, setSnackMessage] = useState("");
+    
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
@@ -65,6 +69,8 @@ function Category() {
         .then(() => {
             setUpdate(false);
             setNewCategory(initialCategory);
+            setSnackMessage("Category added successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
           setMessage(error.message);
@@ -78,6 +84,8 @@ function Category() {
             setUpdate(false);
             setUpdatedCategory(initialCategory);
             setIsNew(true);
+            setSnackMessage("Category updated successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
           setMessage(error.message);
@@ -90,7 +98,8 @@ function Category() {
         .then(() => {
             setUpdate(false);
             setNewCategory(initialCategory);
-            setIsNew(true);
+            setSnackMessage("Category deleted successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
           setMessage(error.message);
@@ -117,7 +126,11 @@ function Category() {
         ...prev,
         [name]: value,
         }));
-    };
+    }
+
+    const handleCloseSnack = () => {
+      setSnackOpen(false);
+  }
 
     return (
       <>
@@ -130,6 +143,11 @@ function Category() {
         >
         <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newCategory.name : updatedCategory.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         <TextField id="outlined-basic" label="Description" variant="outlined" name="description" value={isNew ? newCategory.description : updatedCategory.description} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+        {isNew ? (
+            <Button variant="contained" onClick={handleAddCategory} className="actionBtn">SAVE</Button>
+        ) : (
+            <Button variant="contained" onClick={handleUpdateCategory} className="actionBtn">UPDATE</Button>
+            )}
         </Box>
         <h2>Category List</h2>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", paddingBottom: 20, paddingLeft: 10 }}>
@@ -151,11 +169,6 @@ function Category() {
           </Card>
         ))}
         </div>
-        {isNew ? (
-            <Button variant="contained" onClick={handleAddCategory}>SAVE</Button>
-        ) : (
-            <Button variant="contained" onClick={handleUpdateCategory}>UPDATE</Button>
-            )}
         <Modal
           keepMounted
           open={open}
@@ -172,6 +185,13 @@ function Category() {
             </Typography>
           </Box>
         </Modal>
+        <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={snackOpen}
+                onClose={handleCloseSnack}
+                message={snackMessage}
+                autoHideDuration={6000}
+        />
       </>
   )
 }

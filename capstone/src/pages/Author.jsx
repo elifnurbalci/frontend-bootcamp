@@ -12,6 +12,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import AttributionIcon from '@mui/icons-material/Attribution';
+import Snackbar from '@mui/material/Snackbar';
 
 
 function Author() {
@@ -42,6 +43,9 @@ function Author() {
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
+    const [snackOpen, setSnackOpen] = useState(false);
+    const [snackMessage, setSnackMessage] = useState("");
+
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
@@ -66,6 +70,8 @@ function Author() {
         .then(() => {
             setUpdate(false);
             setNewAuthor(initialAuthor);
+            setSnackMessage("Author added successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -79,6 +85,8 @@ function Author() {
             setUpdate(false);
             setUpdatedAuthor(initialAuthor);
             setIsNew(true);
+            setSnackMessage("Author updated successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -91,7 +99,8 @@ function Author() {
         .then(() => {
             setUpdate(false);
             setNewAuthor(initialAuthor);
-            setIsNew(true);
+            setSnackMessage("Author deleted successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -118,7 +127,11 @@ function Author() {
         ...prev,
         [name]: value,
         }));
-    };
+    }
+
+    const handleCloseSnack = () => {
+        setSnackOpen(false);
+    }
 
     return (
         <>
@@ -132,6 +145,12 @@ function Author() {
             <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newAuthor.name : updatedAuthor.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" type="date" variant="outlined" name="birthDate" value={isNew ? newAuthor.birthDate : updatedAuthor.birthDate} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" label="Country" variant="outlined" name="country" value={isNew ? newAuthor.country : updatedAuthor.country} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+
+            {isNew ? (
+                <Button variant="contained" onClick={handleAddAuthor} className="actionBtn">SAVE</Button>
+            ) : (
+                <Button variant="contained" onClick={handleUpdateAuthor} className="actionBtn">UPDATE</Button>
+                )}
             </Box>
             <h2>Author List</h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", paddingBottom: 20, paddingLeft: 10 }}>
@@ -154,11 +173,6 @@ function Author() {
                 </Card>
             ))}
             </div>
-            {isNew ? (
-                <Button variant="contained" onClick={handleAddAuthor}>SAVE</Button>
-            ) : (
-                <Button variant="contained" onClick={handleUpdateAuthor}>UPDATE</Button>
-                )}
             <Modal
             keepMounted
             open={open}
@@ -175,6 +189,13 @@ function Author() {
                 </Typography>
             </Box>
             </Modal>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={snackOpen}
+                onClose={handleCloseSnack}
+                message={snackMessage}
+                autoHideDuration={6000}
+            />
         </>
   )
 }

@@ -12,6 +12,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import Snackbar from '@mui/material/Snackbar';
 
 
 function Publisher() {
@@ -43,6 +44,9 @@ function Publisher() {
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
+    const [snackOpen, setSnackOpen] = useState(false);
+    const [snackMessage, setSnackMessage] = useState("");
+
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
@@ -67,6 +71,8 @@ function Publisher() {
         .then(() => {
             setUpdate(false);
             setNewPublisher(initialPublisher);
+            setSnackMessage("Publisher added successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -80,6 +86,8 @@ function Publisher() {
             setUpdate(false);
             setUpdatedPublisher(initialPublisher);
             setIsNew(true);
+            setSnackMessage("Publisher updated successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -92,6 +100,8 @@ function Publisher() {
         .then(() => {
             setUpdate(false);
             setNewPublisher(initialPublisher);
+            setSnackMessage("Publisher deleted successfully!");
+            setSnackOpen(true);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -118,7 +128,11 @@ function Publisher() {
         ...prev,
         [name]: value,
         }));
-    };
+    }
+
+    const handleCloseSnack = () => {
+        setSnackOpen(false);
+    }
 
     return (
         <>
@@ -133,6 +147,11 @@ function Publisher() {
             <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newPublisher.name : updatedPublisher.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" label="Year" variant="outlined" name="establishmentYear" value={isNew ? newPublisher.establishmentYear : updatedPublisher.establishmentYear} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" label="Address" variant="outlined" name="address" value={isNew ? newPublisher.address : updatedPublisher.address} onChange={isNew ? handleInputChange : handleEditInputChange}/>
+            {isNew ? (
+                <Button variant="contained" onClick={handleAddPublisher} className="actionBtn">SAVE</Button>
+            ) : (
+                <Button variant="contained" onClick={handleUpdatePublisher} className="actionBtn">UPDATE</Button>
+                )}
             </Box>
             <h2>Publisher List</h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", paddingBottom: 20, paddingLeft: 10 }}>
@@ -149,18 +168,12 @@ function Publisher() {
                     </Typography>
                 </CardContent>
                 <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
-                    <EditNoteIcon onClick={() => handleEditInput(publisher)} />
+                    <EditNoteIcon onClick={() => handleEditInput(publisher)}/>
                     <HighlightOffIcon onClick={() => handleDeletePublisher(publisher)} />
                 </CardActions>
                 </Card>
             ))}
             </div>
-
-            {isNew ? (
-                <Button variant="contained" onClick={handleAddPublisher}>SAVE</Button>
-            ) : (
-                <Button variant="contained" onClick={handleUpdatePublisher}>UPDATE</Button>
-                )}
             <Modal
             keepMounted
             open={open}
@@ -177,6 +190,13 @@ function Publisher() {
                 </Typography>
             </Box>
             </Modal>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={snackOpen}
+                onClose={handleCloseSnack}
+                message={snackMessage}
+                autoHideDuration={6000}
+            />
         </>
   )
 }
