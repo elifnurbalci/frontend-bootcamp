@@ -164,6 +164,14 @@ function Author() {
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     Lizards are a widespread group of squamate reptiles, with over 6,000
                     species, ranging across all continents except Antarctica
+                    <br />
+                    <br />
+                    </Typography >
+                    <hr />
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    <span style={{fontWeight: 600, color:'black'}}>Birth Date: </span>{author.birthDate}
+                    <br />
+                    <span style={{fontWeight: 600, color:'black'}}>Country: </span>{author.country}
                     </Typography>
                 </CardContent>
                 <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
