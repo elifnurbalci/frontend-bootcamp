@@ -26,7 +26,7 @@ function Category() {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: "rgba(255, 0, 0, 0.6)",
+    bgcolor: 'rgba(140, 0, 0, 0.8)',
     borderRadius: "8px",
     boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
     color: "black",
