@@ -220,7 +220,7 @@ function Borrowing() {
   };
 
   return (
-    <>
+    <div className="contentArea">
       <h1>Add Borrowing</h1>
       <Box
         component="form"
@@ -404,7 +404,7 @@ function Borrowing() {
         message={snackMessage}
         autoHideDuration={6000}
       />
-    </>
+    </div>
   );
 }
 export default Borrowing;

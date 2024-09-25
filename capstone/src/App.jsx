@@ -11,7 +11,7 @@ function App() {
         <NavBar />
       </header>
       <br />
-      <div className='body'>
+      <div className='bodyArea'>
         <BodyArea />
       </div>
     </Router>

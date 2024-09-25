@@ -150,7 +150,7 @@ function Publisher() {
   };
 
   return (
-    <>
+    <div className="contentArea">
       <h1>Add Publisher</h1>
       <Box
         component="form"
@@ -158,14 +158,6 @@ function Publisher() {
         noValidate
         autoComplete="off"
       >
-        <TextField
-          id="outlined-basic"
-          label="ID"
-          variant="outlined"
-          name="id"
-          value={isNew ? newPublisher.id : updatedPublisher.id}
-          onChange={isNew ? handleInputChange : handleEditInputChange}
-        />
         <TextField
           id="outlined-basic"
           label="Name"
@@ -290,7 +282,7 @@ function Publisher() {
         message={snackMessage}
         autoHideDuration={6000}
       />
-    </>
+    </div>
   );
 }
 export default Publisher;

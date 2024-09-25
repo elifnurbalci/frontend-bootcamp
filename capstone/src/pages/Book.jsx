@@ -280,7 +280,7 @@ function Book() {
   };
 
   return (
-    <>
+    <div className="contentArea">
       <h1>Add Book</h1>
       <Box
         component="form"
@@ -505,7 +505,7 @@ function Book() {
         message={snackMessage}
         autoHideDuration={6000}
       />
-    </>
+    </div>
   );
 }
 export default Book;

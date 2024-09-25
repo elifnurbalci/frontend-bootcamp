@@ -134,7 +134,7 @@ function Author() {
     }
 
     return (
-        <>
+        <div className="contentArea">
             <h1>Add Author</h1>
             <Box
             component="form"
@@ -203,7 +203,7 @@ function Author() {
                 message={snackMessage}
                 autoHideDuration={6000}
             />
-        </>
+        </div>
   )
 }
 export default Author

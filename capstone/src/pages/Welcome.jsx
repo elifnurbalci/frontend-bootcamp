@@ -6,9 +6,9 @@ function Welcome() {
   return (
     <div className='hero'>
       <img src="../../images/welcome.jpg" alt="welcome" />
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, beatae accusantium nulla quibusdam saepe illum eligendi tempora facilis minima eveniet molestiae numquam ipsum quae sapiente fugiat officia cumque magni dolorem! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, beatae accusantium nulla quibusdam saepe illum eligendi tempora facilis minima eveniet molestiae numquam ipsum quae sapiente fugiat officia cumque magni dolorem!</p>
-      <NavLink to="/book" style={{ textDecoration: 'none' }}>
-        <Button variant="contained" style={{ color: 'white' }}>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <NavLink to="/book" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" style={{ color: 'white', fontWeight: 600}}>
           Search Book
         </Button>
       </NavLink>
