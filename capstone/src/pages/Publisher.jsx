@@ -29,7 +29,7 @@ function Publisher() {
     width: 400,
     bgcolor: "rgba(255, 0, 0, 0.6)",
     borderRadius: "8px",
-    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
     color: "black",
     boxShadow: 24,
     p: 4,
