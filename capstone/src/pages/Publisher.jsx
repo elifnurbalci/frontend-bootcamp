@@ -8,6 +8,10 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 
 
 function Publisher() {
@@ -131,16 +135,27 @@ function Publisher() {
             <TextField id="outlined-basic" label="Address" variant="outlined" name="address" value={isNew ? newPublisher.address : updatedPublisher.address} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             </Box>
             <h2>Publisher List</h2>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", paddingBottom: 20, paddingLeft: 10 }}>
             {publishers?.map((publisher, index) => (
-                <div key={index}>
-                    <div>
-                        <EditNoteIcon onClick={() => handleEditInput(publisher)} />
-                        {publisher.name}
-                        <HighlightOffIcon onClick={() => handleDeletePublisher(publisher)} />
-                        </div>
-                        <br />
-                    </div>
+                <Card sx={{ maxWidth: 345 }} style={{ padding: 20, display: "flex", flexDirection: "column", backgroundColor: '#EEE' }} key={index}>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                    <LocalLibraryIcon style={{paddingRight: 5}} />
+                    {publisher.name}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
+                    </Typography>
+                </CardContent>
+                <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
+                    <EditNoteIcon onClick={() => handleEditInput(publisher)} />
+                    <HighlightOffIcon onClick={() => handleDeletePublisher(publisher)} />
+                </CardActions>
+                </Card>
             ))}
+            </div>
+
             {isNew ? (
                 <Button variant="contained" onClick={handleAddPublisher}>SAVE</Button>
             ) : (

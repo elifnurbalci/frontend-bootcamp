@@ -8,6 +8,10 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CategoryIcon from '@mui/icons-material/Category';
 
 function Category() {
     const initialCategory = {
@@ -128,16 +132,25 @@ function Category() {
         <TextField id="outlined-basic" label="Description" variant="outlined" name="description" value={isNew ? newCategory.description : updatedCategory.description} onChange={isNew ? handleInputChange : handleEditInputChange}/>
         </Box>
         <h2>Category List</h2>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", paddingBottom: 20, paddingLeft: 10 }}>
         {categories?.map((category, index) => (
-            <div key={index}>
-                <div>
-                    <EditNoteIcon onClick={() => handleEditInput(category)} />
-                    {category.name}
-                    <HighlightOffIcon onClick={() => handleDeleteCategory(category)} />
-                    </div>
-                    <br />
-                </div>
+          <Card sx={{ maxWidth: 345 }} style={{ padding: 20, display: "flex", flexDirection: "column", backgroundColor: '#EEE' }} key={index}>
+          <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+              <CategoryIcon style={{paddingRight: 5}} />
+              {category.name}
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+              </Typography>
+          </CardContent>
+          <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
+              <EditNoteIcon onClick={() => handleEditInput(category)} />
+              <HighlightOffIcon onClick={() => handleDeleteCategory(category)} />
+          </CardActions>
+          </Card>
         ))}
+        </div>
         {isNew ? (
             <Button variant="contained" onClick={handleAddCategory}>SAVE</Button>
         ) : (

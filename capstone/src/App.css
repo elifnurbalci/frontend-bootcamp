@@ -42,3 +42,7 @@
   z-index: 1;
   margin-bottom: 40px;
 }
+
+.body, h1, h2 {
+  padding-left: 5px;
+}
