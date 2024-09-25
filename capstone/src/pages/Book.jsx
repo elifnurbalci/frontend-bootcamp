@@ -13,6 +13,13 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import Snackbar from "@mui/material/Snackbar";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormGroup from "@mui/material/FormGroup";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+import Checkbox from "@mui/material/Checkbox";
 
 function Book() {
   const initialBook = {
@@ -32,7 +39,7 @@ function Book() {
       establishmentYear: "",
       address: "",
     },
-    books: [],
+    categories: [],
   };
   const style = {
     position: "absolute",
@@ -58,16 +65,60 @@ function Book() {
   const [message, setMessage] = useState("");
   const [snackOpen, setSnackOpen] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+  const [selectedAuthor, setSelectedAuthor] = useState({});
+  const [authors, setAuthors] = useState([]);
+  const [selectedPublisher, setSelectedPublisher] = useState({});
+  const [publishers, setPublishers] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [categoryPlaceHolder, setCategoryPlaceHolder] = useState("Select");
 
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
     axios
-      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/book")
+      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/books")
       .then((res) => {
         setBooks(res.data);
         setUpdate(true);
         setLoading(false);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+        setOpen(true);
+      });
+    axios
+      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/authors")
+      .then((res) => {
+        setAuthors(res.data);
+        setUpdate(true);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+        setOpen(true);
+      });
+    axios
+      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/publishers")
+      .then((res) => {
+        setPublishers(res.data);
+        setUpdate(true);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+        setOpen(true);
+      });
+    axios
+      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/categories")
+      .then((res) => {
+        setCategories(res.data);
+        setUpdate(true);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+        setOpen(true);
       });
   }, [update]);
 
@@ -155,6 +206,79 @@ function Book() {
     setSnackOpen(false);
   };
 
+  const handleAuthorSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedAuthor(value);
+    setNewBook((prev) => ({
+      ...prev,
+      author: { ...prev.author, id: value },
+    }));
+  };
+
+  const handleAuthorEditSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedAuthor(value);
+    setUpdatedBook((prev) => ({
+      ...prev,
+      author: { ...prev.author, id: value },
+    }));
+  };
+
+  const handlePublisherSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedPublisher(value);
+    setNewBook((prev) => ({
+      ...prev,
+      publisher: { ...prev.publisher, id: value },
+    }));
+  };
+  const handlePublisherEditSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedAuthor(value);
+    setUpdatedBook((prev) => ({
+      ...prev,
+      author: { ...prev.author, id: value },
+    }));
+  };
+
+  const handleCategorySelectChange = (e, category) => {
+    const { checked } = e.target;
+    setNewBook((prev) => {
+      const categories = checked
+        ? [...prev.categories, category]
+        : prev.categories.filter((c) => c.id !== category.id);
+      return {
+        ...prev,
+        categories,
+      };
+    });
+    setCategoryPlaceHolder((prev) => ({
+      ...prev,
+      categoryPlaceHolder: `${
+        newBook.categories.length + (checked ? 1 : -1)
+      } Selected`,
+    }));
+  };
+  const handleCategoryEditSelectChange = (e) => {
+    const { checked } = e.target;
+    setUpdatedBook((prev) => {
+      const categories = checked
+        ? [...prev.categories, category]
+        : prev.categories.filter((c) => c.id !== category.id);
+      return {
+        ...prev,
+        categories,
+      };
+    });
+    
+    setCategoryPlaceHolder((prev) => ({
+      ...prev,
+      categoryPlaceHolder: `${
+        updatedBook.categories.length + (checked ? 1 : -1)
+      } Selected`,
+    }));
+  };
+
   return (
     <>
       <h1>Add Book</h1>
@@ -174,12 +298,113 @@ function Book() {
         />
         <TextField
           id="outlined-basic"
-          label="Description"
+          label="Publication Year"
           variant="outlined"
-          name="description"
-          value={isNew ? newBook.description : updatedBook.description}
+          name="publicationYear"
+          type="number"
+          value={isNew ? newBook.publicationYear : updatedBook.publicationYear}
           onChange={isNew ? handleInputChange : handleEditInputChange}
         />
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Author</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={
+              isNew ? newBook.author?.id || 0 : updatedBook.author?.id || 0
+            }
+            label="Author"
+            onChange={
+              isNew ? handleAuthorSelectChange : handleAuthorEditSelectChange
+            }
+          >
+            <MenuItem value={0} disabled>
+              {categoryPlaceHolder} Author
+            </MenuItem>
+            {authors?.map((author) => (
+              <MenuItem key={author.id} value={author.id}>
+                {author.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Publisher</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={
+              isNew
+                ? newBook.publisher?.id || 0
+                : updatedBook.publisher?.id || 0
+            }
+            label="Publisher"
+            onChange={
+              isNew
+                ? handlePublisherSelectChange
+                : handlePublisherEditSelectChange
+            }
+          >
+            <MenuItem value={0} disabled>
+              {categoryPlaceHolder} Publisher
+            </MenuItem>
+            {publishers?.map((publisher) => (
+              <MenuItem key={publisher.id} value={publisher.id}>
+                {publisher.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormGroup>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={
+                isNew
+                  ? newBook.categories.map((c) => c.id)
+                  : updatedBook.categories.map((c) => c.id)
+              }
+              multiple
+              renderValue={(selected) => `${selected.length} Selected`}
+              onChange={(e) => {
+                const selectedIds = e.target.value;
+                const selectedCategories = categories.filter((category) =>
+                  selectedIds.includes(category.id)
+                );
+
+                if (isNew) {
+                  setNewBook((prev) => ({
+                    ...prev,
+                    categories: selectedCategories,
+                  }));
+                } else {
+                  setUpdatedBook((prev) => ({
+                    ...prev,
+                    categories: selectedCategories,
+                  }));
+                }
+              }}
+            >
+              {categories?.map((category) => (
+                <MenuItem key={category.id} value={category.id}>
+                  <Checkbox
+                    checked={
+                      isNew
+                        ? newBook.categories.some((c) => c.id === category.id)
+                        : updatedBook.categories.some(
+                            (c) => c.id === category.id
+                          )
+                    }
+                  />
+                  {category.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </FormGroup>
+
         {isNew ? (
           <Button
             variant="contained"
@@ -232,10 +457,14 @@ function Book() {
               </Typography>
               <hr />
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                <span style={{ fontWeight: 600, color: "black" }}>Publication Year: </span>
+                <span style={{ fontWeight: 600, color: "black" }}>
+                  Publication Year:{" "}
+                </span>
                 {book.publicationYear}
                 <br />
-                <span style={{ fontWeight: 600, color: "black" }}>Author Name: </span>
+                <span style={{ fontWeight: 600, color: "black" }}>
+                  Author Name:{" "}
+                </span>
                 {book.author.name}
               </Typography>
             </CardContent>

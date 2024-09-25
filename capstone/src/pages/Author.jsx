@@ -145,7 +145,6 @@ function Author() {
             <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={isNew ? newAuthor.name : updatedAuthor.name} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" type="date" variant="outlined" name="birthDate" value={isNew ? newAuthor.birthDate : updatedAuthor.birthDate} onChange={isNew ? handleInputChange : handleEditInputChange}/>
             <TextField id="outlined-basic" label="Country" variant="outlined" name="country" value={isNew ? newAuthor.country : updatedAuthor.country} onChange={isNew ? handleInputChange : handleEditInputChange}/>
-
             {isNew ? (
                 <Button variant="contained" onClick={handleAddAuthor} className="actionBtn">SAVE</Button>
             ) : (

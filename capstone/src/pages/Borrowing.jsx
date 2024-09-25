@@ -13,13 +13,18 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import BookIcon from "@mui/icons-material/Book";
 import Snackbar from "@mui/material/Snackbar";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 
 function Borrowing() {
   const initialBorrowing = {
     borrowerName: "",
     borrowerMail: "",
     borrowingDate: "",
-    BorrowingForBorrowingRequest: {
+    bookForBorrowingRequest: {
       id: "",
       name: "",
       publicationYear: "",
@@ -50,6 +55,10 @@ function Borrowing() {
   const [message, setMessage] = useState("");
   const [snackOpen, setSnackOpen] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+  const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState([]);
+  const [bookPlaceHolder, setBookPlaceHolder] = useState("Select");
+  const [returnedBorrowingId, setReturnedBorrowingId] = useState("");
 
   const handleClose = () => setOpen(false);
 
@@ -60,6 +69,17 @@ function Borrowing() {
         setBorrowings(res.data);
         setUpdate(true);
         setLoading(false);
+      });
+    axios
+      .get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/books")
+      .then((res) => {
+        setBooks(res.data);
+        setUpdate(true);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+        setOpen(true);
       });
   }, [update]);
 
@@ -151,6 +171,54 @@ function Borrowing() {
     setSnackOpen(false);
   };
 
+  const handleBookSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedBook(value);
+    setNewBorrowing((prev) => ({
+      ...prev,
+      bookForBorrowingRequest: { ...prev.book, id: value },
+    }));
+  };
+
+  const handleBookEditSelectChange = (e) => {
+    const { value } = e.target;
+    setSelectedBook(value);
+    setUpdatedBorrowing((prev) => ({
+      ...prev,
+      bookForBorrowingRequest: { ...prev.book, id: value },
+    }));
+  };
+
+  const handleReturn = (returnedBorrowing) => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 2;
+    const day = currentDate.getDate();
+    const returnedDate = `${year}-${month}-${day}`;
+
+    returnedBorrowing.returnDate = returnedDate;
+
+    axios
+      .put(
+        import.meta.env.VITE_APP_BASE_URL +
+          "/api/v1/borrows/" +
+          returnedBorrowing.id,
+        returnedBorrowing
+      )
+      .then((res) => {
+        setUpdate(false);
+        setUpdatedBorrowing(initialBorrowing);
+        setIsNew(true);
+        setSnackMessage("Returned successfully!");
+        setSnackOpen(true);
+        setReturnedBorrowingId(returnedBorrowing.id);
+      })
+      .catch((e) => {
+        setMessage(error.message);
+        setOpen(true);
+      });
+  };
+
   return (
     <>
       <h1>Add Borrowing</h1>
@@ -162,22 +230,59 @@ function Borrowing() {
       >
         <TextField
           id="outlined-basic"
-          label="Name"
+          label="Borrower Name"
           variant="outlined"
-          name="name"
-          value={isNew ? newBorrowing.name : updatedBorrowing.name}
+          name="borrowerName"
+          value={
+            isNew ? newBorrowing.borrowerName : updatedBorrowing.borrowerName
+          }
           onChange={isNew ? handleInputChange : handleEditInputChange}
         />
         <TextField
           id="outlined-basic"
-          label="Description"
+          label="Borrower Email"
           variant="outlined"
-          name="description"
+          name="borrowerMail"
           value={
-            isNew ? newBorrowing.description : updatedBorrowing.description
+            isNew ? newBorrowing.borrowerMail : updatedBorrowing.borrowerMail
           }
           onChange={isNew ? handleInputChange : handleEditInputChange}
         />
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          name="borrowingDate"
+          type="date"
+          value={
+            isNew ? newBorrowing.borrowingDate : updatedBorrowing.borrowingDate
+          }
+          onChange={isNew ? handleInputChange : handleEditInputChange}
+        />
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Books</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={
+              isNew
+                ? newBorrowing.bookForBorrowingRequest?.id || 0
+                : updatedBorrowing.book?.id || 0
+            }
+            label="Book"
+            onChange={
+              isNew ? handleBookSelectChange : handleBookEditSelectChange
+            }
+          >
+            <MenuItem value={0} disabled>
+              {bookPlaceHolder} Book
+            </MenuItem>
+            {books?.map((book) => (
+              <MenuItem key={book.id} value={book.id}>
+                {book.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         {isNew ? (
           <Button
             variant="contained"
@@ -218,9 +323,19 @@ function Borrowing() {
             key={index}
           >
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                <BookIcon style={{ paddingRight: 5 }} />
-                {borrowing.borrowerName}
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  <BookIcon style={{ paddingRight: 5 }} />
+                  {borrowing.borrowerName}
+                </div>
+                <HighlightOffIcon
+                  onClick={() => handleDeleteBorrowing(borrowing)}
+                />
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 Lizards are a widespread group of squamate reptiles, with over
@@ -231,23 +346,32 @@ function Borrowing() {
               <hr />
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 <span style={{ fontWeight: 600, color: "black" }}>
-                  Birth Date:{" "}
+                Borrowed Book:{" "}
                 </span>
-                {author.birthDate}
+                {borrowing.book.name}
                 <br />
                 <span style={{ fontWeight: 600, color: "black" }}>
-                  Country:{" "}
+                  Borrowered Date:{" "}
                 </span>
-                {author.country}
+                {borrowing.borrowingDate}
               </Typography>
             </CardContent>
             <CardActions
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <EditNoteIcon onClick={() => handleEditInput(Borrowing)} />
-              <HighlightOffIcon
-                onClick={() => handleDeleteBorrowing(Borrowing)}
-              />
+              {returnedBorrowingId === borrowing.id ||
+              Boolean(borrowing.returnDate) ? (
+                  <span
+                    style={{ fontWeight: 500, color: "darkgray", fontSize: 12, marginLeft: "auto" }}
+                  >
+                    Returned Date: {borrowing.returnDate}
+                  </span>
+              ) : (
+                <>
+                <EditNoteIcon onClick={() => handleEditInput(borrowing)} />
+                <AssignmentReturnIcon onClick={() => handleReturn(borrowing)} />
+                </>
+              )}
             </CardActions>
           </Card>
         ))}
