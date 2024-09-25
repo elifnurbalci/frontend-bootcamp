@@ -6,12 +6,28 @@ import Button from '@mui/material/Button';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+import { colors } from "@mui/material";
 
 function Category() {
     const initialCategory = {
         id: "",
         name: "",
         description: "",
+    };
+    const style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'rgba(255, 0, 0, 0.6)',
+      borderRadius: '8px',
+      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+      color: 'black',
+      boxShadow: 24,
+      p: 4,
     };
 
     const [newCategory, setNewCategory] = useState(initialCategory);
@@ -20,6 +36,9 @@ function Category() {
     const [update, setUpdate] = useState(false);
     const [isNew, setIsNew] = useState(true);
     const [loading, setLoading] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_APP_BASE_URL + "/api/v1/categories")
@@ -45,7 +64,8 @@ function Category() {
             setNewCategory(initialCategory);
         })
         .catch((error) => {
-            console.log(error);
+          setMessage(error.message);
+          setOpen(true);
         })
     }
 
@@ -57,7 +77,8 @@ function Category() {
             setIsNew(true);
         })
         .catch((error) => {
-            console.log(error);
+          setMessage(error.message);
+          setOpen(true);
         })
     }
 
@@ -69,7 +90,8 @@ function Category() {
             setIsNew(true);
         })
         .catch((error) => {
-            console.log(error);
+          setMessage(error.message);
+          setOpen(true);
         })
     }
 
@@ -95,7 +117,7 @@ function Category() {
     };
 
     return (
-        <>
+      <>
         <h1>Add Category</h1>
         <Box
         component="form"
@@ -122,7 +144,23 @@ function Category() {
         ) : (
             <Button variant="contained" onClick={handleUpdateCategory}>UPDATE</Button>
             )}
-        </>
+        <Modal
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="keep-mounted-modal-title"
+          aria-describedby="keep-mounted-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="keep-mounted-modal-title" variant="h6" component="h2" fontWeight={800}>
+              Error
+            </Typography>
+            <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+              {message}
+            </Typography>
+          </Box>
+        </Modal>
+      </>
   )
 }
 export default Category

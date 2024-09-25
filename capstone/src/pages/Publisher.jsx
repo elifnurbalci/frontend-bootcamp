@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LinearProgress from '@mui/material/LinearProgress';
+import Modal from '@mui/material/Modal';
+
 
 function Publisher() {
     const initialPublisher = {
